@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <style>
+        * {
+            background-color: #272b30;
+            color: #717a73;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        button {
+            background-color: #8998ab;
+            border-radius: 5px;
+            color: #4f5863;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: 'Nunito', sans-serif;
+            padding: 5px;
+        }
+
+        button:hover {
+            background-color: #4f5863;
+            color: #8998ab;
+        }
+
+        .container {
+            display: grid;
+            width: 100%;
+            height: 100%;
+            grid-template-columns: 30vw 68vw;
+            grid-template-rows: 15vh 82vh;
+            grid-row-gap: 1vh;
+        }
+
+        .title {
+            background-color: #272b00;
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 1;
+            grid-row-end: 1;
+        }
+
+        .process {
+            background-color: #272b00;
+            grid-column-start: 1;
+            grid-column-end: 1;
+            grid-row-start: 2;
+            grid-row-end: 2;
+        }
+
+        .table {
+            background-color: #272b00;
+            grid-column-start: 2;
+            grid-column-end: 2;
+            grid-row-start: 2;
+            grid-row-end: 2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="title">
+        Welcome
+    </div>
+
+    <div class="process">
+        <label for="operationNumber">
+            <input id="operationNumber" type="number">
+        </label>
+    </div>
+    <div class="table">
+
+    </div>
+</div>
+
+</body>
+</html>
