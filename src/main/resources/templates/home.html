@@ -14,6 +14,14 @@
             margin: 0;
         }
 
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+
         button {
             background-color: #8998ab;
             border-radius: 5px;
@@ -32,8 +40,7 @@
         .container {
             display: grid;
             grid-template-columns: 25vw 75vw;
-            grid-template-rows: 15vh 69vh 10vh;
-            grid-gap: 5px;
+            grid-template-rows: 15vh 75vh 10vh;
             grid-template-areas:
             "title title"
             "process table"
@@ -41,35 +48,24 @@
         }
 
         .title {
-            background-color: #272b00;
             grid-area: title;
             margin: auto;
-            justify-content: center;
-            align-content: center;
         }
 
         .process {
-            background-color: #272b00;
             grid-area: process;
-            margin: auto;
-            justify-content: center;
-            align-content: center;
+            text-align: center;
+            margin-top: 6rem;
         }
 
         .table {
-            background-color: #272b00;
             grid-area: table;
-            margin: auto;
-            justify-content: center;
-            align-content: center;
+            margin-top: 3rem;
         }
 
         .footer {
-            background-color: #272b00;
             grid-area: footer;
-            margin: auto;
-            justify-content: center;
-            align-content: center;
+            padding-top: 2rem;
         }
 
         h1 {
@@ -80,9 +76,10 @@
 
         label {
             display: inline-block;
-            width: 13rem;
-            padding: 20px;
+            width: 10rem;
+            padding: 1rem;
             font-size: 1rem;
+            text-align: left;
         }
 
         select {
@@ -95,13 +92,44 @@
             font-size: 1rem;
         }
 
-        thead {
-            display: block;
+        table {
+            border-collapse: collapse;
+            border-style: hidden;
+            margin: 0 auto;
+        }
 
+        td, th {
+            border: 1px solid #4f5863;
         }
 
         tbody {
             display: block;
+        }
+
+        thead {
+            display: block;
+        }
+
+        .tableNumber {
+            width: 5rem;
+            text-align: center;
+            padding: 6px;
+        }
+
+        .tableDescriptionHead {
+            width: 30rem;
+            padding: 6px;
+        }
+
+        .tableDescription {
+            width: 30rem;
+            padding-left: 1rem;
+        }
+
+        .tablePredecessor {
+            width: 10rem;
+            text-align: center;
+            padding: 6px;
         }
     </style>
 </head>
@@ -154,23 +182,23 @@
         <table>
             <thead>
             <tr>
-                <th>Nr.</th>
-                <th>Bezeichnung</th>
-                <th>Dauer (Minuten)</th>
-                <th>Vorgänger 1</th>
-                <th>Vorgänger 2</th>
-                <th>Vorgänger 3</th>
+                <th class="tableNumber">Nr.</th>
+                <th class="tableDescriptionHead">Bezeichnung</th>
+                <th class="tablePredecessor">Dauer <br> (Minuten)</th>
+                <th class="tablePredecessor">Vorgänger 1</th>
+                <th class="tablePredecessor">Vorgänger 2</th>
+                <th class="tablePredecessor">Vorgänger 3</th>
             </tr>
             </thead>
 
             <tbody>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td class="tableNumber">1</td>
+                <td class="tableDescription">Test</td>
+                <td class="tablePredecessor">1</td>
+                <td class="tablePredecessor">0</td>
+                <td class="tablePredecessor">0</td>
+                <td class="tablePredecessor">0</td>
             </tr>
             </tbody>
         </table>
