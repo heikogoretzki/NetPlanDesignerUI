@@ -9,6 +9,9 @@
             background-color: #272b30;
             color: #717a73;
             font-family: 'Nunito', sans-serif;
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
         }
 
         button {
@@ -28,35 +31,68 @@
 
         .container {
             display: grid;
-            width: 100%;
-            height: 100%;
-            grid-template-columns: 30vw 68vw;
-            grid-template-rows: 15vh 82vh;
-            grid-row-gap: 1vh;
+            grid-template-columns: 25vw 75vw;
+            grid-template-rows: 15vh 69vh 10vh;
+            grid-gap: 5px;
+            grid-template-areas:
+            "title title"
+            "process table"
+            "footer footer";
         }
 
         .title {
             background-color: #272b00;
-            grid-column-start: 1;
-            grid-column-end: 2;
-            grid-row-start: 1;
-            grid-row-end: 1;
+            grid-area: title;
+            margin: auto;
+            justify-content: center;
+            align-content: center;
         }
 
         .process {
             background-color: #272b00;
-            grid-column-start: 1;
-            grid-column-end: 1;
-            grid-row-start: 2;
-            grid-row-end: 2;
+            grid-area: process;
+            margin: auto;
+            justify-content: center;
+            align-content: center;
         }
 
         .table {
             background-color: #272b00;
-            grid-column-start: 2;
-            grid-column-end: 2;
-            grid-row-start: 2;
-            grid-row-end: 2;
+            grid-area: table;
+            margin: auto;
+            justify-content: center;
+            align-content: center;
+        }
+
+        .footer {
+            background-color: #272b00;
+            grid-area: footer;
+            margin: auto;
+            justify-content: center;
+            align-content: center;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        label {
+            display: inline-block;
+            width: 13rem;
+            padding: 20px;
+            font-size: 1rem;
+        }
+
+        select {
+            width: 13rem;
+            font-size: 1rem;
+        }
+
+        input {
+            width: 13rem;
+            font-size: 1rem;
         }
     </style>
 </head>
@@ -64,16 +100,60 @@
 
 <div class="container">
     <div class="title">
-        Welcome
+        <h1>Net Plan Designer</h1>
     </div>
 
     <div class="process">
-        <label for="operationNumber">
+        <div>
+            <label for="operationNumber">Nr.</label>
             <input id="operationNumber" type="number">
-        </label>
-    </div>
-    <div class="table">
+        </div>
 
+        <div>
+            <label for="operationDescription">Bezeichnung*</label>
+            <input id="operationDescription" type="text">
+        </div>
+
+        <div>
+            <label for="durationInMinutes">Dauer (Minuten)*</label>
+            <input id="durationInMinutes" type="number">
+        </div>
+
+        <div>
+            <label for="predecessorOneListIndex">Vorgänger 1</label>
+            <select id="predecessorOneListIndex">
+                <option value=""></option>
+            </select>
+        </div>
+
+        <div>
+            <label for="predecessorTwoListIndex">Vorgänger 2</label>
+            <select id="predecessorTwoListIndex">
+            <option value=""></option>
+            </select>
+        </div>
+
+        <div>
+            <label for="predecessorThreeListIndex">Vorgänger 3</label>
+            <select id="predecessorThreeListIndex">
+            <option value=""></option>
+            </select>
+        </div>
+    </div>
+
+    <div class="table">
+        <table>
+            <thead></thead>
+            <thead></thead>
+            <thead></thead>
+            <thead></thead>
+            <thead></thead>
+            <thead></thead>
+        </table>
+    </div>
+
+    <div class="footer">
+        Test
     </div>
 </div>
 
