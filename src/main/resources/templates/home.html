@@ -94,6 +94,15 @@
             width: 13rem;
             font-size: 1rem;
         }
+
+        thead {
+            display: block;
+
+        }
+
+        tbody {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -129,26 +138,41 @@
         <div>
             <label for="predecessorTwoListIndex">Vorgänger 2</label>
             <select id="predecessorTwoListIndex">
-            <option value=""></option>
+                <option value=""></option>
             </select>
         </div>
 
         <div>
             <label for="predecessorThreeListIndex">Vorgänger 3</label>
             <select id="predecessorThreeListIndex">
-            <option value=""></option>
+                <option value=""></option>
             </select>
         </div>
     </div>
 
     <div class="table">
         <table>
-            <thead></thead>
-            <thead></thead>
-            <thead></thead>
-            <thead></thead>
-            <thead></thead>
-            <thead></thead>
+            <thead>
+            <tr>
+                <th>Nr.</th>
+                <th>Bezeichnung</th>
+                <th>Dauer (Minuten)</th>
+                <th>Vorgänger 1</th>
+                <th>Vorgänger 2</th>
+                <th>Vorgänger 3</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
         </table>
     </div>
 
