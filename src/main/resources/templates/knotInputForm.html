@@ -47,6 +47,15 @@
             "footer footer";
         }
 
+        /*.process {*/
+        /*    display: grid;*/
+        /*    grid-template-columns: 100vw;*/
+        /*    grid-template-rows: 75vh 25vh;*/
+        /*    grid-template-areas:*/
+        /*    "inputField";*/
+        /*    "buttonProcess"*/
+        /*}*/
+
         .title {
             grid-area: title;
             margin: auto;
@@ -70,6 +79,14 @@
             padding-left: ;
         }
 
+        .processInput {
+            grid-area: inputField;
+        }
+
+        .buttonProcess {
+            grid-area: buttonProcess;
+        }
+
         h1 {
             font-size: 4rem;
             font-style: italic;
@@ -87,11 +104,13 @@
         select {
             width: 14rem;
             font-size: 1rem;
+            border-radius: 5px;
         }
 
         input {
             width: 14rem;
             font-size: 1rem;
+            border-radius: 5px;
         }
 
         table {
@@ -147,50 +166,54 @@
     </div>
 
     <div class="process">
-        <div>
-            <label for="operationNumber">Nr.</label>
-            <input id="operationNumber" type="number">
+        <div class="processInput">
+            <div>
+                <label for="operationNumber">Nr.</label>
+                <input id="operationNumber" type="number">
+            </div>
+
+            <div>
+                <label for="operationDescription">Bezeichnung*</label>
+                <input id="operationDescription" type="text">
+            </div>
+
+            <div>
+                <label for="durationInMinutes">Dauer (Minuten)*</label>
+                <input id="durationInMinutes" type="number">
+            </div>
+
+            <div>
+                <label for="predecessorOneListIndex">Vorgänger 1</label>
+                <select id="predecessorOneListIndex">
+                    <option value=""></option>
+                </select>
+            </div>
+
+            <div>
+                <label for="predecessorTwoListIndex">Vorgänger 2</label>
+                <select id="predecessorTwoListIndex">
+                    <option value=""></option>
+                </select>
+            </div>
+
+            <div>
+                <label for="predecessorThreeListIndex">Vorgänger 3</label>
+                <select id="predecessorThreeListIndex">
+                    <option value=""></option>
+                </select>
+            </div>
         </div>
 
-        <div>
-            <label for="operationDescription">Bezeichnung*</label>
-            <input id="operationDescription" type="text">
-        </div>
-
-        <div>
-            <label for="durationInMinutes">Dauer (Minuten)*</label>
-            <input id="durationInMinutes" type="number">
-        </div>
-
-        <div>
-            <label for="predecessorOneListIndex">Vorgänger 1</label>
-            <select id="predecessorOneListIndex">
-                <option value=""></option>
-            </select>
-        </div>
-
-        <div>
-            <label for="predecessorTwoListIndex">Vorgänger 2</label>
-            <select id="predecessorTwoListIndex">
-                <option value=""></option>
-            </select>
-        </div>
-
-        <div>
-            <label for="predecessorThreeListIndex">Vorgänger 3</label>
-            <select id="predecessorThreeListIndex">
-                <option value=""></option>
-            </select>
-        </div>
-
-        <label for="reset-button"></label>
+        <div class="buttonProcess">
+            <label for="reset-button"></label>
             <button id="reset-button" type="reset">Löschen</button>
 
-        <label for="submit-button"></label>
+            <label for="submit-button"></label>
             <button id="submit-button" type="submit">Speichern</button>
 
-        <label for="netPlan-button"></label>
+            <label for="netPlan-button"></label>
             <button id="netPlan-button">Netzplan erstellen</button>
+        </div>
 
     </div>
 
