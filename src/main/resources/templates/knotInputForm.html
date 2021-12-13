@@ -61,12 +61,13 @@
         .table {
             grid-area: table;
             margin-top: 3rem;
-            overflow: scroll;
+            overflow: auto;
         }
 
         .footer {
             grid-area: footer;
             padding-top: 2rem;
+            padding-left: ;
         }
 
         h1 {
@@ -84,12 +85,12 @@
         }
 
         select {
-            width: 13rem;
+            width: 14rem;
             font-size: 1rem;
         }
 
         input {
-            width: 13rem;
+            width: 14rem;
             font-size: 1rem;
         }
 
@@ -181,6 +182,16 @@
                 <option value=""></option>
             </select>
         </div>
+
+        <label for="reset-button"></label>
+            <button id="reset-button" type="reset">Löschen</button>
+
+        <label for="submit-button"></label>
+            <button id="submit-button" type="submit">Speichern</button>
+
+        <label for="netPlan-button"></label>
+            <button id="netPlan-button">Netzplan erstellen</button>
+
     </div>
 
     <div class="table">
@@ -210,7 +221,8 @@
     </div>
 
     <div class="footer">
-        Test
+        <label for="home"></label>
+        <button type="button" id="home" onclick="location.href='http://localhost:8080'">Home</button>
     </div>
 </div>
 
