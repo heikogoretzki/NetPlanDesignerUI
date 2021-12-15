@@ -32,5 +32,7 @@ public class ConvertKnotInputFormListToKnotListTest {
         assertEquals(1, convertedList.get(5).getPredecessor().size());
         assertEquals(1, convertedList.get(8).getPredecessor().size());
         assertEquals(3, convertedList.get(9).getPredecessor().size());
+        assertEquals(1, convertedList.get(1).getSuccessor().size());
+        assertEquals(1, convertedList.get(8).getSuccessor().size());
     }
 }
