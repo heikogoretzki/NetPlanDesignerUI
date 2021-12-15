@@ -41,9 +41,24 @@ public class NetPlanController {
         return "outputTable";
     }
 
-    private List<Knot> convertKnotInputFormListToKnotList(List<KnotInputForm> knotInputFormList) {
-
-        return null;
+    public List<Knot> convertKnotInputFormListToKnotList(List<KnotInputForm> knotInputFormList) {
+        List<Knot> result = new ArrayList<>();
+        for (KnotInputForm knotInputForm : knotInputFormList) {
+            result.add(new Knot(knotInputForm.getOperationNumber(), knotInputForm.getOperationDescription(), knotInputForm.getDurationInMinutes()));
+            if (knotInputForm.getPredecessorOneListIndex() != null) {
+                result.get(result.size()-1).getPredecessor().add(result.get(knotInputForm.getPredecessorOneListIndex()));
+                result.get(knotInputForm.getPredecessorOneListIndex()).getSuccessor().add(result.get(knotInputForm.getOperationNumber()-1));
+            }
+            if (knotInputForm.getPredecessorTwoListIndex() != null) {
+                result.get(result.size()-1).getPredecessor().add(result.get(knotInputForm.getPredecessorTwoListIndex()));
+                result.get(knotInputForm.getPredecessorTwoListIndex()).getSuccessor().add(result.get(knotInputForm.getOperationNumber()-1));
+            }
+            if (knotInputForm.getPredecessorThreeListIndex() != null) {
+                result.get(result.size()-1).getPredecessor().add(result.get(knotInputForm.getPredecessorThreeListIndex()));
+                result.get(knotInputForm.getPredecessorThreeListIndex()).getSuccessor().add(result.get(knotInputForm.getOperationNumber()-1));
+            }
+        }
+        return result;
     }
 
     private void calculateNetPlanResults(List<Knot> knots) {

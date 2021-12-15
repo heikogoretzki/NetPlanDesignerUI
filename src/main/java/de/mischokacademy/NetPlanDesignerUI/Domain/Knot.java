@@ -40,7 +40,7 @@ public class Knot {
         this.successor = successor;
     }
 
-    public Knot(int operationNumber, String operationDuration, int durationInMinutes, int earliestStart, int earliestEnd, List<Knot> predecessor, List<Knot> successor) {
+    public Knot(int operationNumber, String operationDuration, int durationInMinutes, List<Knot> predecessor, List<Knot> successor, int earliestStart, int earliestEnd) {
         this.operationNumber = operationNumber;
         this.operationDuration = operationDuration;
         this.durationInMinutes = durationInMinutes;
@@ -67,7 +67,9 @@ public class Knot {
         return null;
     }
 
-    public void calculateEarliestTime() {
+    public void calculateEarliestTime(int earliestEnd) {
+
+
 
     }
 
