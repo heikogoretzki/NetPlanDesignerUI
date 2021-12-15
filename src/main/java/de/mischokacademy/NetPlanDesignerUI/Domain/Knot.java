@@ -12,7 +12,7 @@ import java.util.List;
 @ToString
 public class Knot {
     private int operationNumber;
-    private String operationDuration;
+    private String operationDescription;
     private int durationInMinutes;
     private int earliestStart;
     private int earliestEnd;
@@ -28,13 +28,13 @@ public class Knot {
 
     public Knot(int operationNumber, String operationDuration, int durationInMinutes) {
         this.operationNumber = operationNumber;
-        this.operationDuration = operationDuration;
+        this.operationDescription = operationDuration;
         this.durationInMinutes = durationInMinutes;
     }
 
     public Knot(int operationNumber, String operationDuration, int durationInMinutes, List<Knot> predecessor, List<Knot> successor) {
         this.operationNumber = operationNumber;
-        this.operationDuration = operationDuration;
+        this.operationDescription = operationDuration;
         this.durationInMinutes = durationInMinutes;
         this.predecessor = predecessor;
         this.successor = successor;
@@ -42,7 +42,7 @@ public class Knot {
 
     public Knot(int operationNumber, String operationDuration, int durationInMinutes, List<Knot> predecessor, List<Knot> successor, int earliestStart, int earliestEnd) {
         this.operationNumber = operationNumber;
-        this.operationDuration = operationDuration;
+        this.operationDescription = operationDuration;
         this.durationInMinutes = durationInMinutes;
         this.earliestStart = earliestStart;
         this.earliestEnd = earliestEnd;
@@ -52,7 +52,7 @@ public class Knot {
 
     public Knot(int operationNumber, String operationDuration, int durationInMinutes, int earliestStart, int earliestEnd, int latestStart, int latestEnd, List<Knot> predecessor, List<Knot> successor) {
         this.operationNumber = operationNumber;
-        this.operationDuration = operationDuration;
+        this.operationDescription = operationDuration;
         this.durationInMinutes = durationInMinutes;
         this.earliestStart = earliestStart;
         this.earliestEnd = earliestEnd;

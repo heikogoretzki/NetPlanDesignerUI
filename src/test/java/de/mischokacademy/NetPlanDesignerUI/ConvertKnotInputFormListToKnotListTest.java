@@ -29,6 +29,13 @@ public class ConvertKnotInputFormListToKnotListTest {
         NetPlanController newController = new NetPlanController();
         List<Knot> convertedList = newController.convertKnotInputFormListToKnotList(knotInputFormList);
 
+        assertEquals(0, convertedList.get(0).getPredecessor().size());
+        assertEquals(1, convertedList.get(0).getOperationNumber());
+        assertEquals("Start", convertedList.get(0).getOperationDescription());
+        assertEquals(3, convertedList.get(0).getDurationInMinutes());
+        assertEquals(1, convertedList.get(0).getSuccessor().size());
+        assertEquals(convertedList.get(1), convertedList.get(0).getSuccessor().get(0));
+
         assertEquals(1, convertedList.get(5).getPredecessor().size());
         assertEquals(1, convertedList.get(8).getPredecessor().size());
         assertEquals(3, convertedList.get(9).getPredecessor().size());
