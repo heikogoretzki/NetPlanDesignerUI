@@ -81,12 +81,6 @@ public class NetPlanController {
     private String validateNotTwoEnds(BindingResult bindingResult, List<Knot> knots) {
         Objects.requireNonNull(knots);
 
-        for (Knot knotList : knots) {
-//            if (knotList.getSuccessor().size() != null) {
-
-            }
-        }
-
         return null;
     }
 

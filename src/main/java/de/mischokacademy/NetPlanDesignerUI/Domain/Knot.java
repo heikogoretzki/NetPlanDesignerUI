@@ -67,10 +67,25 @@ public class Knot {
         return null;
     }
 
-    public void calculateEarliestTime(int earliestEnd) {
+    public void calculateEarliestTime() {
+        if (this.getPredecessor().size() == 0) {
+            this.setEarliestStart(0);
+            this.setEarliestEnd(this.getEarliestStart() + this.getDurationInMinutes());
+        } else {
+            for (int i = 0; i < this.getPredecessor().size(); i++) {
+                Knot tempKnot = this.getPredecessor().get(i); // fail
+                this.setEarliestStart(tempKnot.getEarliestStart() + tempKnot.getDurationInMinutes());
+            }
+        }
 
+    }
 
+    public List<Knot> getPredecessor() {
+        if (predecessor == null) {
+            predecessor = new ArrayList<>();
+        }
 
+        return predecessor;
     }
 
     public void calculateLatestTime() {

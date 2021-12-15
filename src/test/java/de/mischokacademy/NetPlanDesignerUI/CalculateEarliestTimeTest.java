@@ -64,11 +64,17 @@ public class CalculateEarliestTimeTest {
         return result;
     }
 
-//    @Test
-//    void Test1() {
-//        List<Knot> knots = knots();
-////        List<Knot> result = knotsResult();
-//
-//        assertEquals(4, knots.get(0).getEarliestEnd());
-//    }
+    @Test
+    void Test1() {
+        List<Knot> knots = knots();
+
+        knots.get(0).calculateEarliestTime();
+        knots.get(1).calculateEarliestTime();
+
+        assertEquals(0, knots.get(0).getEarliestStart());
+        assertEquals(3, knots.get(0).getEarliestEnd());
+        assertEquals(3, knots.get(1).getEarliestStart());
+        assertEquals(4, knots.get(1).getEarliestEnd());
+
+    }
 }
