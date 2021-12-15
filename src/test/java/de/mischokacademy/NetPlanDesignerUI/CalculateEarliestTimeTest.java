@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KnotTest {
+public class CalculateEarliestTimeTest {
     private List<Knot> knots = new ArrayList<>();
     private List<Knot> result = new ArrayList<>();
 
     @Test
-    void testCalculateEarliestTime() {
-        knots.add(new Knot(1, "Meetup", 3, null, null));                                    // index 0
+    void Test1() {
+        knots.add(new Knot(1, "Meetup", 3, null, null));                                     // index 0
         knots.add(new Knot(2, "Check Personal", 1, List.of(knots.get(0)), null));                       // index 1
         knots.add(new Knot(3, "Make a Plan", 4, List.of(knots.get(1)), null));                          // index 2
         knots.add(new Knot(4, "Doing 1", 2, List.of(knots.get(2)), null));                              // index 3

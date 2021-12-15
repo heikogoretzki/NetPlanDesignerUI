@@ -4,149 +4,149 @@
     <meta charset="UTF-8">
     <title>Knot Input Form</title>
 
-    <style>
-        * {
-            background-color: #272b30;
-            color: #717a73;
-            font-family: 'Nunito', sans-serif;
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-        }
+        <style>
+            * {
+                background-color: #272b30;
+                color: #717a73;
+                font-family: 'Nunito', sans-serif;
+                box-sizing: border-box;
+                padding: 0;
+                margin: auto;
+            }
 
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            position: absolute;
-        }
+            html, body {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                width: 100%;
+                position: relative;
+            }
 
-        button {
-            background-color: #8998ab;
-            border-radius: 5px;
-            color: #4f5863;
-            font-size: 16px;
-            font-weight: bold;
-            font-family: 'Nunito', sans-serif;
-            padding: 5px;
-        }
+            button {
+                background-color: #8998ab;
+                border-radius: 5px;
+                color: #4f5863;
+                font-size: 16px;
+                font-weight: bold;
+                font-family: 'Nunito', sans-serif;
+                padding: 5px;
+            }
 
-        button:hover {
-            background-color: #4f5863;
-            color: #8998ab;
-        }
+            button:hover {
+                background-color: #4f5863;
+                color: #8998ab;
+            }
 
-        .container {
-            display: grid;
-            grid-template-columns: 25vw 75vw;
-            grid-template-rows: 15vh 75vh 10vh;
-            grid-template-areas:
-            "title title"
-            "process table"
-            "footer footer";
-        }
+            .container {
+                display: grid;
+                grid-template-columns: 25vw 75vw;
+                grid-template-rows: 15vh 75vh 10vh;
+                grid-template-areas:
+                "title title"
+                "process table"
+                "footer footer";
+            }
 
-        .title {
-            grid-area: title;
-            margin: auto;
-        }
+            .title {
+                grid-area: title;
+                margin: auto;
+            }
 
-        .process {
-            grid-area: process;
-            text-align: center;
-            margin-top: 6rem;
-        }
+            .process {
+                grid-area: process;
+                text-align: center;
+                margin-top: 6rem;
+            }
 
-        .table {
-            grid-area: table;
-            margin-top: 3rem;
-            overflow: auto;
-        }
+            .table {
+                grid-area: table;
+                margin-top: 3rem;
+                overflow: auto;
+            }
 
-        .footer {
-            grid-area: footer;
-            padding-top: 2rem;
-            padding-left: ;
-        }
+            .footer {
+                grid-area: footer;
+                padding-top: 2rem;
+                padding-left: ;
+            }
 
-        .processInput {
-            grid-area: inputField;
-        }
+            .processInput {
+                grid-area: inputField;
+            }
 
-        .buttonProcess {
-            grid-area: buttonProcess;
-        }
+            .buttonProcess {
+                grid-area: buttonProcess;
+            }
 
-        h1 {
-            font-size: 4rem;
-            font-style: italic;
-            font-weight: bold;
-        }
+            h1 {
+                font-size: 4rem;
+                font-style: italic;
+                font-weight: bold;
+            }
 
-        label {
-            display: inline-block;
-            width: 12rem;
-            padding: 1rem;
-            font-size: 1rem;
-            text-align: left;
-        }
+            label {
+                display: inline-block;
+                width: 12rem;
+                padding: 1rem;
+                font-size: 1rem;
+                text-align: left;
+            }
 
-        select {
-            width: 14rem;
-            font-size: 1rem;
-            border-radius: 5px;
-        }
+            select {
+                width: 14rem;
+                font-size: 1rem;
+                border-radius: 5px;
+            }
 
-        input {
-            width: 14rem;
-            font-size: 1rem;
-            border-radius: 5px;
-        }
+            input {
+                width: 14rem;
+                font-size: 1rem;
+                border-radius: 5px;
+            }
 
-        table {
-            table-layout: fixed;
-            border-collapse: collapse;
-            border-style: hidden;
-            margin: 0 auto;
-        }
+            table {
+                table-layout: fixed;
+                border-collapse: collapse;
+                border-style: hidden;
+                margin: 0 auto;
+            }
 
-        td, th {
-            border: 1px solid #4f5863;
-            word-wrap: break-word;
-        }
+            td, th {
+                border: 1px solid #4f5863;
+                word-wrap: break-word;
+            }
 
-        tbody {
-            display: block;
-        }
+            tbody {
+                display: block;
+            }
 
-        thead {
-            display: block;
-        }
+            thead {
+                display: block;
+            }
 
-        .tableNumber {
-            width: 5rem;
-            text-align: center;
-            padding: 6px;
-        }
+            .tableNumber {
+                width: 5rem;
+                text-align: center;
+                padding: 6px;
+            }
 
-        .tableDescriptionHead {
-            width: 30rem;
-            padding: 6px;
-        }
+            .tableDescriptionHead {
+                width: 30rem;
+                padding: 6px;
+            }
 
-        .tableDescription {
-            width: 30rem;
-            word-wrap: break-word;
-            padding-left: 1rem;
-        }
+            .tableDescription {
+                width: 30rem;
+                word-wrap: break-word;
+                padding-left: 1rem;
+            }
 
-        .tablePredecessor {
-            width: 10rem;
-            text-align: center;
-            padding: 6px;
-        }
-    </style>
+            .tablePredecessor {
+                width: 10rem;
+                text-align: center;
+                padding: 6px;
+            }
+        </style>
 
 </head>
 <body>
