@@ -1,12 +1,5 @@
 package de.mischokacademy.NetPlanDesignerUI.Domain;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
-@Getter
-@Setter
-@ToString
 public class KnotInputForm {
     private int operationNumber;
     private String operationDescription;
@@ -22,5 +15,65 @@ public class KnotInputForm {
         this.predecessorOneListIndex = predecessorOneListIndex;
         this.predecessorTwoListIndex = predecessorTwoListIndex;
         this.predecessorThreeListIndex = predecessorThreeListIndex;
+    }
+
+    public int getOperationNumber() {
+        return operationNumber;
+    }
+
+    public void setOperationNumber(int operationNumber) {
+        this.operationNumber = operationNumber;
+    }
+
+    public String getOperationDescription() {
+        return operationDescription;
+    }
+
+    public void setOperationDescription(String operationDescription) {
+        this.operationDescription = operationDescription;
+    }
+
+    public int getDurationInMinutes() {
+        return durationInMinutes;
+    }
+
+    public void setDurationInMinutes(int durationInMinutes) {
+        this.durationInMinutes = durationInMinutes;
+    }
+
+    public Integer getPredecessorOneListIndex() {
+        return predecessorOneListIndex;
+    }
+
+    public void setPredecessorOneListIndex(Integer predecessorOneListIndex) {
+        this.predecessorOneListIndex = predecessorOneListIndex;
+    }
+
+    public Integer getPredecessorTwoListIndex() {
+        return predecessorTwoListIndex;
+    }
+
+    public void setPredecessorTwoListIndex(Integer predecessorTwoListIndex) {
+        this.predecessorTwoListIndex = predecessorTwoListIndex;
+    }
+
+    public Integer getPredecessorThreeListIndex() {
+        return predecessorThreeListIndex;
+    }
+
+    public void setPredecessorThreeListIndex(Integer predecessorThreeListIndex) {
+        this.predecessorThreeListIndex = predecessorThreeListIndex;
+    }
+
+    @Override
+    public String toString() {
+        return "KnotInputForm{" +
+                "operationNumber=" + operationNumber +
+                ", operationDescription='" + operationDescription + '\'' +
+                ", durationInMinutes=" + durationInMinutes +
+                ", predecessorOneListIndex=" + predecessorOneListIndex +
+                ", predecessorTwoListIndex=" + predecessorTwoListIndex +
+                ", predecessorThreeListIndex=" + predecessorThreeListIndex +
+                '}';
     }
 }

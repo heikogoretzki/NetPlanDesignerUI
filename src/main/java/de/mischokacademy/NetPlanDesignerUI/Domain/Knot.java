@@ -1,21 +1,12 @@
 package de.mischokacademy.NetPlanDesignerUI.Domain;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
-@ToString
 public class Knot {
     private int operationNumber;
     private String operationDescription;
     private int durationInMinutes;
-//    private int earliestStart;
-//    private int earliestEnd;
     private int latestStart;
     private int latestEnd;
     private int totalBuffer;
@@ -58,6 +49,74 @@ public class Knot {
         this.successor = successor;
     }
 
+    public int getEarliestStart() {
+        return getMaximumOfEarliestEndOfPredecessors();
+    }
+
+    public int getEarliestEnd() {
+        return this.getEarliestStart() + this.getDurationInMinutes();
+    }
+
+    public int getOperationNumber() {
+        return operationNumber;
+    }
+
+    public void setOperationNumber(int operationNumber) {
+        this.operationNumber = operationNumber;
+    }
+
+    public String getOperationDescription() {
+        return operationDescription;
+    }
+
+    public void setOperationDescription(String operationDescription) {
+        this.operationDescription = operationDescription;
+    }
+
+    public int getDurationInMinutes() {
+        return durationInMinutes;
+    }
+
+    public void setDurationInMinutes(int durationInMinutes) {
+        this.durationInMinutes = durationInMinutes;
+    }
+
+    public int getLatestStart() {
+        return latestStart;
+    }
+
+    public void setLatestStart(int latestStart) {
+        this.latestStart = latestStart;
+    }
+
+    public int getLatestEnd() {
+        return latestEnd;
+    }
+
+    public void setLatestEnd(int latestEnd) {
+        this.latestEnd = latestEnd;
+    }
+
+    public int getTotalBuffer() {
+        return totalBuffer;
+    }
+
+    public void setTotalBuffer(int totalBuffer) {
+        this.totalBuffer = totalBuffer;
+    }
+
+    public int getFreeBuffer() {
+        return freeBuffer;
+    }
+
+    public void setFreeBuffer(int freeBuffer) {
+        this.freeBuffer = freeBuffer;
+    }
+
+    public List<Knot> getSuccessor() {
+        return successor;
+    }
+
     public List<Knot> calculateCriticalPath() {
 
         return null;
@@ -67,27 +126,6 @@ public class Knot {
 //        this.setEarliestStart(getMaximumOfEarliestEndOfPredecessors());
 //        this.setEarliestEnd(this.getEarliestStart() + this.getDurationInMinutes());
 //    }
-
-    private int getMaximumOfEarliestEndOfPredecessors() {
-        int result = 0;
-
-        for (Knot tempKnot : this.getPredecessor()) {
-            int tempEarliestEnd = tempKnot.getEarliestEnd();
-
-//            result = Math.max(result, tempEarliestEnd);
-
-            if (tempEarliestEnd > result) {
-                result = tempEarliestEnd;
-            }
-        }
-
-        return result;
-
-//        return this.getPredecessor().stream()
-//                .mapToInt(knot -> knot.getEarliestEnd())
-//                .max()
-//                .orElse(0);
-    }
 
     public List<Knot> getPredecessor() {
         if (predecessor == null) {
@@ -105,11 +143,39 @@ public class Knot {
 
     }
 
-    public int getEarliestStart() {
-        return getMaximumOfEarliestEndOfPredecessors();
+    private int getMaximumOfEarliestEndOfPredecessors() {
+        int result = 0;
+
+        for (Knot tempKnot : this.getPredecessor()) {
+            int tempEarliestEnd = tempKnot.getEarliestEnd();
+
+            result = Math.max(result, tempEarliestEnd);
+
+//            if (tempEarliestEnd > result) {
+//                result = tempEarliestEnd;
+//            }
+        }
+
+        return result;
+
+//        return this.getPredecessor().stream()
+//                .mapToInt(knot -> knot.getEarliestEnd())
+//                .max()
+//                .orElse(0);
     }
 
-    public int getEarliestEnd() {
-        return this.getEarliestStart() + this.getDurationInMinutes();
+    @Override
+    public String toString() {
+        return "Knot{" +
+                "operationNumber=" + operationNumber +
+                ", operationDescription='" + operationDescription + '\'' +
+                ", durationInMinutes=" + durationInMinutes +
+                ", latestStart=" + latestStart +
+                ", latestEnd=" + latestEnd +
+                ", totalBuffer=" + totalBuffer +
+                ", freeBuffer=" + freeBuffer +
+                ", predecessor=" + predecessor +
+                ", successor=" + successor +
+                '}';
     }
 }
