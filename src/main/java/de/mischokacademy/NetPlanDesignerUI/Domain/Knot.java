@@ -154,8 +154,8 @@ public class Knot {
     private int getMaximumOfEarliestEndOfPredecessors() {
         int result = 0;
 
-        for (Knot tempKnot : this.getPredecessor()) {
-            int tempEarliestEnd = tempKnot.getEarliestEnd();
+        for (Knot actualPredecessor : this.getPredecessor()) {
+            int tempEarliestEnd = actualPredecessor.getEarliestEnd();
 
             result = Math.max(result, tempEarliestEnd);
         }
