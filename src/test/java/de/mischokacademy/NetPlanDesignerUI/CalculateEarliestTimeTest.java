@@ -61,6 +61,5 @@ public class CalculateEarliestTimeTest {
         assertEquals(16, knots.get(8).getEarliestEnd());
         assertEquals(16, knots.get(9).getEarliestStart());
         assertEquals(17, knots.get(9).getEarliestEnd());
-
     }
 }

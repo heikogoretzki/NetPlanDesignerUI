@@ -82,7 +82,7 @@ public class Knot {
     }
 
     public int getLatestStart() {
-        return latestStart;
+        return this.getLatestEnd() - this.getDurationInMinutes();
     }
 
     public void setLatestStart(int latestStart) {
@@ -90,7 +90,7 @@ public class Knot {
     }
 
     public int getLatestEnd() {
-        return latestEnd;
+        return getMinimumOfLatestStartOfSuccessor();
     }
 
     public void setLatestEnd(int latestEnd) {
@@ -113,8 +113,28 @@ public class Knot {
         this.freeBuffer = freeBuffer;
     }
 
+    public List<Knot> getPredecessor() {
+        if (predecessor == null) {
+            predecessor = new ArrayList<>();
+        }
+
+        return predecessor;
+    }
+
+    public void setPredecessor(List<Knot> predecessor) {
+        this.predecessor = predecessor;
+    }
+
     public List<Knot> getSuccessor() {
+        if (successor == null) {
+            successor = new ArrayList<>();
+        }
+
         return successor;
+    }
+
+    public void setSuccessor(List<Knot> successor) {
+        this.successor = successor;
     }
 
     public List<Knot> calculateCriticalPath() {
@@ -127,18 +147,6 @@ public class Knot {
 //        this.setEarliestEnd(this.getEarliestStart() + this.getDurationInMinutes());
 //    }
 
-    public List<Knot> getPredecessor() {
-        if (predecessor == null) {
-            predecessor = new ArrayList<>();
-        }
-
-        return predecessor;
-    }
-
-    public void calculateLatestTime() {
-
-    }
-
     public void calculateBuffer() {
 
     }
@@ -150,10 +158,6 @@ public class Knot {
             int tempEarliestEnd = tempKnot.getEarliestEnd();
 
             result = Math.max(result, tempEarliestEnd);
-
-//            if (tempEarliestEnd > result) {
-//                result = tempEarliestEnd;
-//            }
         }
 
         return result;
@@ -162,6 +166,18 @@ public class Knot {
 //                .mapToInt(knot -> knot.getEarliestEnd())
 //                .max()
 //                .orElse(0);
+    }
+
+    private int getMinimumOfLatestStartOfSuccessor() {
+        int result = this.getEarliestEnd();
+
+        for (Knot actualSuccessor : this.getSuccessor()) {
+            int tempLatestStart = actualSuccessor.getLatestEnd() - actualSuccessor.getDurationInMinutes();
+
+            result = Math.min(result, tempLatestStart);
+        }
+
+        return result;
     }
 
     @Override
