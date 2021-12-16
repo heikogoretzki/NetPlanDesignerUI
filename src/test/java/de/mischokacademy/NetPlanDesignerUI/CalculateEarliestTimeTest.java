@@ -68,13 +68,18 @@ public class CalculateEarliestTimeTest {
     void Test1() {
         List<Knot> knots = knots();
 
-        knots.get(0).calculateEarliestTime();
-        knots.get(1).calculateEarliestTime();
+//        knots.get(0).calculateEarliestTime();
+//        knots.get(1).calculateEarliestTime();
+//        knots.get(2).calculateEarliestTime();
 
         assertEquals(0, knots.get(0).getEarliestStart());
         assertEquals(3, knots.get(0).getEarliestEnd());
         assertEquals(3, knots.get(1).getEarliestStart());
         assertEquals(4, knots.get(1).getEarliestEnd());
+        assertEquals(4, knots.get(2).getEarliestStart());
+        assertEquals(8, knots.get(2).getEarliestEnd());
+        assertEquals(8, knots.get(3).getEarliestStart());
+        assertEquals(10, knots.get(3).getEarliestEnd());
 
     }
 }
