@@ -7,10 +7,6 @@ public class Knot {
     private int operationNumber;
     private String operationDescription;
     private int durationInMinutes;
-    private int latestStart;
-    private int latestEnd;
-    private int totalBuffer;
-    private int freeBuffer;
     private List<Knot> predecessor = new ArrayList<>();
     private List<Knot> successor = new ArrayList<>();
 
@@ -21,6 +17,13 @@ public class Knot {
         this.operationNumber = operationNumber;
         this.operationDescription = operationDescription;
         this.durationInMinutes = durationInMinutes;
+    }
+
+    public Knot(int operationNumber, String operationDescription, int durationInMinutes, List<Knot> predecessor) {
+        this.operationNumber = operationNumber;
+        this.operationDescription = operationDescription;
+        this.durationInMinutes = durationInMinutes;
+        this.predecessor = predecessor;
     }
 
     public Knot(int operationNumber, String operationDescription, int durationInMinutes, List<Knot> predecessor, List<Knot> successor) {
@@ -39,12 +42,18 @@ public class Knot {
         this.successor = successor;
     }
 
+    public Knot(int operationNumber, String operationDescription, int durationInMinutes, List<Knot> predecessor, List<Knot> successor, int earliestStart, int earliestEnd, int latestStart, int latestEnd) {
+        this.operationNumber = operationNumber;
+        this.operationDescription = operationDescription;
+        this.durationInMinutes = durationInMinutes;
+        this.predecessor = predecessor;
+        this.successor = successor;
+    }
+
     public Knot(int operationNumber, String operationDescription, int durationInMinutes, int latestStart, int latestEnd, List<Knot> predecessor, List<Knot> successor) {
         this.operationNumber = operationNumber;
         this.operationDescription = operationDescription;
         this.durationInMinutes = durationInMinutes;
-        this.latestStart = latestStart;
-        this.latestEnd = latestEnd;
         this.predecessor = predecessor;
         this.successor = successor;
     }
@@ -85,32 +94,16 @@ public class Knot {
         return this.getLatestEnd() - this.getDurationInMinutes();
     }
 
-    public void setLatestStart(int latestStart) {
-        this.latestStart = latestStart;
-    }
-
     public int getLatestEnd() {
         return getMinimumOfLatestStartOfSuccessor();
     }
 
-    public void setLatestEnd(int latestEnd) {
-        this.latestEnd = latestEnd;
-    }
-
     public int getTotalBuffer() {
-        return totalBuffer;
-    }
-
-    public void setTotalBuffer(int totalBuffer) {
-        this.totalBuffer = totalBuffer;
+        return Math.subtractExact(this.getLatestStart(), this.getEarliestStart());
     }
 
     public int getFreeBuffer() {
-        return freeBuffer;
-    }
-
-    public void setFreeBuffer(int freeBuffer) {
-        this.freeBuffer = freeBuffer;
+        return calcFreeBuffer();
     }
 
     public List<Knot> getPredecessor() {
@@ -142,15 +135,6 @@ public class Knot {
         return null;
     }
 
-//    public void calculateEarliestTime() {
-//        this.setEarliestStart(getMaximumOfEarliestEndOfPredecessors());
-//        this.setEarliestEnd(this.getEarliestStart() + this.getDurationInMinutes());
-//    }
-
-    public void calculateBuffer() {
-
-    }
-
     private int getMaximumOfEarliestEndOfPredecessors() {
         int result = 0;
 
@@ -159,24 +143,34 @@ public class Knot {
 
             result = Math.max(result, tempEarliestEnd);
         }
-
         return result;
-
-//        return this.getPredecessor().stream()
-//                .mapToInt(knot -> knot.getEarliestEnd())
-//                .max()
-//                .orElse(0);
     }
 
     private int getMinimumOfLatestStartOfSuccessor() {
-        int result = this.getEarliestEnd();
+        if (this.getSuccessor().isEmpty()) {
+            return this.getEarliestEnd();
 
-        for (Knot actualSuccessor : this.getSuccessor()) {
-            int tempLatestStart = actualSuccessor.getLatestEnd() - actualSuccessor.getDurationInMinutes();
+        } else {
 
-            result = Math.min(result, tempLatestStart);
+            int result = Integer.MAX_VALUE;
+
+            for (Knot actualSuccessor : this.getSuccessor()) {
+                int tempLatestStart = actualSuccessor.getLatestStart();
+
+                result = Math.min(result, tempLatestStart);
+            }
+            return result;
         }
+    }
 
+    private int calcFreeBuffer() {
+        int result = 0;
+
+        if (!this.getSuccessor().isEmpty()) {
+            result = Math.subtractExact(this.getSuccessor().get(this.getSuccessor().size() - 1).getEarliestStart(), this.getEarliestEnd());
+        } else {
+            result = 0;
+        }
         return result;
     }
 
@@ -186,10 +180,8 @@ public class Knot {
                 "operationNumber=" + operationNumber +
                 ", operationDescription='" + operationDescription + '\'' +
                 ", durationInMinutes=" + durationInMinutes +
-                ", latestStart=" + latestStart +
-                ", latestEnd=" + latestEnd +
-                ", totalBuffer=" + totalBuffer +
-                ", freeBuffer=" + freeBuffer +
+//                ", latestStart=" + latestStart +
+//                ", latestEnd=" + latestEnd +
                 ", predecessor=" + predecessor +
                 ", successor=" + successor +
                 '}';
