@@ -99,7 +99,7 @@ public class Knot {
     }
 
     public int getTotalBuffer() {
-        return Math.subtractExact(this.getLatestStart(), this.getEarliestStart());
+        return Math.subtractExact(this.getLatestEnd(), this.getEarliestEnd());
     }
 
     public int getFreeBuffer() {
@@ -131,8 +131,13 @@ public class Knot {
     }
 
     public List<Knot> calculateCriticalPath() {
+        List<Knot> criticalPathKnots = new ArrayList<>();
 
-        return null;
+        if (this.getFreeBuffer() == 0 && this.getTotalBuffer() == 0) {
+            criticalPathKnots.add(this);
+        }
+
+        return criticalPathKnots;
     }
 
     private int getMaximumOfEarliestEndOfPredecessors() {

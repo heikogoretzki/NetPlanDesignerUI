@@ -3,6 +3,8 @@ package de.mischokacademy.NetPlanDesignerUI;
 import de.mischokacademy.NetPlanDesignerUI.Domain.Knot;
 import org.junit.jupiter.api.Test;
 
+import javax.validation.constraints.NotNull;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -37,48 +39,6 @@ public class CalculateBufferTest {
         return knots;
     }
 
-    @Test
-    void TotalBufferTest() {
-        List<Knot> knots = knots();
-
-        assertEquals(0, knots.get(0).getTotalBuffer());
-
-        assertEquals(3, knots.get(1).getEarliestStart());
-        assertEquals(3, knots.get(1).getLatestStart());
-        assertEquals(4, knots.get(1).getLatestEnd());
-        assertEquals(0, knots.get(1).getTotalBuffer());
-
-        assertEquals(0, knots.get(2).getTotalBuffer());
-
-        assertEquals(8, knots.get(3).getEarliestStart());
-        assertEquals(11, knots.get(3).getLatestStart());
-        assertEquals(13, knots.get(3).getLatestEnd());
-        assertEquals(3, knots.get(3).getTotalBuffer());
-
-        assertEquals(3, knots.get(4).getTotalBuffer());
-        assertEquals(0, knots.get(5).getTotalBuffer());
-        assertEquals(3, knots.get(6).getTotalBuffer());
-        assertEquals(3, knots.get(7).getTotalBuffer());
-        assertEquals(0, knots.get(8).getTotalBuffer());
-        assertEquals(0, knots.get(9).getTotalBuffer());
-    }
-
-    @Test
-    void FreeBufferTest() {
-        List<Knot> knots = knots();
-
-        assertEquals(0, knots.get(0).getFreeBuffer());
-        assertEquals(0, knots.get(1).getFreeBuffer());
-        assertEquals(0, knots.get(2).getFreeBuffer());
-        assertEquals(0, knots.get(3).getFreeBuffer());
-        assertEquals(0, knots.get(4).getFreeBuffer());
-        assertEquals(0, knots.get(5).getFreeBuffer());
-        assertEquals(3, knots.get(6).getFreeBuffer());
-        assertEquals(3, knots.get(7).getFreeBuffer());
-        assertEquals(0, knots.get(8).getFreeBuffer());
-        assertEquals(0, knots.get(9).getFreeBuffer());
-    }
-
     private List<Knot> knotList() {
         List<Knot> knotList = new ArrayList<>();
 
@@ -107,7 +67,39 @@ public class CalculateBufferTest {
     }
 
     @Test
-    void Test2() {
+    void FreeBufferKnotsTest() {
+        List<Knot> knots = knots();
+
+        assertEquals(0, knots.get(0).getFreeBuffer());
+        assertEquals(0, knots.get(1).getFreeBuffer());
+        assertEquals(0, knots.get(2).getFreeBuffer());
+        assertEquals(0, knots.get(3).getFreeBuffer());
+        assertEquals(0, knots.get(4).getFreeBuffer());
+        assertEquals(0, knots.get(5).getFreeBuffer());
+        assertEquals(3, knots.get(6).getFreeBuffer());
+        assertEquals(3, knots.get(7).getFreeBuffer());
+        assertEquals(0, knots.get(8).getFreeBuffer());
+        assertEquals(0, knots.get(9).getFreeBuffer());
+    }
+
+    @Test
+    void TotalBufferKnotsTest() {
+        List<Knot> knots = knots();
+
+        assertEquals(0, knots.get(0).getTotalBuffer());
+        assertEquals(0, knots.get(1).getTotalBuffer());
+        assertEquals(0, knots.get(2).getTotalBuffer());
+        assertEquals(3, knots.get(3).getTotalBuffer());
+        assertEquals(3, knots.get(4).getTotalBuffer());
+        assertEquals(0, knots.get(5).getTotalBuffer());
+        assertEquals(3, knots.get(6).getTotalBuffer());
+        assertEquals(3, knots.get(7).getTotalBuffer());
+        assertEquals(0, knots.get(8).getTotalBuffer());
+        assertEquals(0, knots.get(9).getTotalBuffer());
+    }
+
+    @Test
+    void FreeBufferKnotListTest() {
         List<Knot> knotList = knotList();
 
         assertEquals(0, knotList.get(0).getFreeBuffer());
@@ -120,6 +112,21 @@ public class CalculateBufferTest {
         assertEquals(0, knotList.get(7).getFreeBuffer());
         assertEquals(14, knotList.get(8).getFreeBuffer());
         assertEquals(0, knotList.get(9).getFreeBuffer());
+    }
 
+    @Test
+    void TotalBufferKnotListTest() {
+        List<Knot> knotList = knotList();
+
+        assertEquals(6, knotList.get(0).getTotalBuffer());
+        assertEquals(6, knotList.get(1).getTotalBuffer());
+        assertEquals(6, knotList.get(2).getTotalBuffer());
+        assertEquals(0, knotList.get(3).getTotalBuffer());
+        assertEquals(2, knotList.get(4).getTotalBuffer());
+        assertEquals(0, knotList.get(5).getTotalBuffer());
+        assertEquals(0, knotList.get(6).getTotalBuffer());
+        assertEquals(0, knotList.get(7).getTotalBuffer());
+        assertEquals(14, knotList.get(8).getTotalBuffer());
+        assertEquals(0, knotList.get(9).getTotalBuffer());
     }
 }
