@@ -34,6 +34,7 @@ public class Knot {
         this.successor = successor;
     }
 
+    @SuppressWarnings("unused")
     public Knot(int operationNumber, String operationDescription, int durationInMinutes, List<Knot> predecessor, List<Knot> successor, int earliestStart, int earliestEnd) {
         this.operationNumber = operationNumber;
         this.operationDescription = operationDescription;
@@ -42,6 +43,7 @@ public class Knot {
         this.successor = successor;
     }
 
+    @SuppressWarnings("unused")
     public Knot(int operationNumber, String operationDescription, int durationInMinutes, List<Knot> predecessor, List<Knot> successor, int earliestStart, int earliestEnd, int latestStart, int latestEnd) {
         this.operationNumber = operationNumber;
         this.operationDescription = operationDescription;
@@ -50,6 +52,7 @@ public class Knot {
         this.successor = successor;
     }
 
+    @SuppressWarnings("unused")
     public Knot(int operationNumber, String operationDescription, int durationInMinutes, int latestStart, int latestEnd, List<Knot> predecessor, List<Knot> successor) {
         this.operationNumber = operationNumber;
         this.operationDescription = operationDescription;
@@ -70,6 +73,7 @@ public class Knot {
         return operationNumber;
     }
 
+    @SuppressWarnings("unused")
     public void setOperationNumber(int operationNumber) {
         this.operationNumber = operationNumber;
     }
@@ -78,6 +82,7 @@ public class Knot {
         return operationDescription;
     }
 
+    @SuppressWarnings("unused")
     public void setOperationDescription(String operationDescription) {
         this.operationDescription = operationDescription;
     }
@@ -86,6 +91,7 @@ public class Knot {
         return durationInMinutes;
     }
 
+    @SuppressWarnings("unused")
     public void setDurationInMinutes(int durationInMinutes) {
         this.durationInMinutes = durationInMinutes;
     }
@@ -112,10 +118,6 @@ public class Knot {
         }
 
         return predecessor;
-    }
-
-    public void setPredecessor(List<Knot> predecessor) {
-        this.predecessor = predecessor;
     }
 
     public List<Knot> getSuccessor() {
@@ -169,7 +171,7 @@ public class Knot {
     }
 
     private int calcFreeBuffer() {
-        int result = 0;
+        int result;
 
         if (!this.getSuccessor().isEmpty()) {
             result = Math.subtractExact(this.getSuccessor().get(this.getSuccessor().size() - 1).getEarliestStart(), this.getEarliestEnd());

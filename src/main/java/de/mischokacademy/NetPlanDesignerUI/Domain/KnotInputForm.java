@@ -21,6 +21,7 @@ public class KnotInputForm {
         return operationNumber;
     }
 
+    @SuppressWarnings("unused")
     public void setOperationNumber(int operationNumber) {
         this.operationNumber = operationNumber;
     }
@@ -29,6 +30,7 @@ public class KnotInputForm {
         return operationDescription;
     }
 
+    @SuppressWarnings("unused")
     public void setOperationDescription(String operationDescription) {
         this.operationDescription = operationDescription;
     }
@@ -37,6 +39,7 @@ public class KnotInputForm {
         return durationInMinutes;
     }
 
+    @SuppressWarnings("unused")
     public void setDurationInMinutes(int durationInMinutes) {
         this.durationInMinutes = durationInMinutes;
     }
@@ -45,6 +48,7 @@ public class KnotInputForm {
         return predecessorOneListIndex;
     }
 
+    @SuppressWarnings("unused")
     public void setPredecessorOneListIndex(Integer predecessorOneListIndex) {
         this.predecessorOneListIndex = predecessorOneListIndex;
     }
@@ -53,6 +57,7 @@ public class KnotInputForm {
         return predecessorTwoListIndex;
     }
 
+    @SuppressWarnings("unused")
     public void setPredecessorTwoListIndex(Integer predecessorTwoListIndex) {
         this.predecessorTwoListIndex = predecessorTwoListIndex;
     }
@@ -61,6 +66,7 @@ public class KnotInputForm {
         return predecessorThreeListIndex;
     }
 
+    @SuppressWarnings("unused")
     public void setPredecessorThreeListIndex(Integer predecessorThreeListIndex) {
         this.predecessorThreeListIndex = predecessorThreeListIndex;
     }

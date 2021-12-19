@@ -15,8 +15,8 @@ import java.util.Objects;
 
 @Controller
 public class NetPlanController {
-    private static List<KnotInputForm> knotInputFormList = new ArrayList<>();
-    private static List<Knot> knots = new ArrayList<>();
+    private static final List<KnotInputForm> knotInputFormList = new ArrayList<>();
+    private static final List<Knot> knots = new ArrayList<>();
 
     @GetMapping("/")
     public String getStartPage() {
