@@ -71,16 +71,16 @@ public class CalculateCriticalPathTest {
 
         // 1, 2, 3, 6, 9, 10
 
-//        assertEquals(0, knots.get(0).calculateCriticalPath());
-//        assertEquals(0, knots.get(1).calculateCriticalPath());
-//        assertEquals(0, knots.get(2).calculateCriticalPath());
-//        assertEquals(0, knots.get(3).calculateCriticalPath());
-//        assertEquals(0, knots.get(4).calculateCriticalPath());
-//        assertEquals(0, knots.get(5).calculateCriticalPath());
-//        assertEquals(3, knots.get(6).calculateCriticalPath());
-//        assertEquals(3, knots.get(7).calculateCriticalPath());
-//        assertEquals(0, knots.get(8).calculateCriticalPath());
-//        assertEquals(0, knots.get(9).calculateCriticalPath());
+
+
+
+//        for (Knot knot : knots) {
+//            if (knot.calculateCriticalPathTwo() != null) {
+//                criticalPath.add(knot.calculateCriticalPathTwo());
+//            }
+//        }
+
+        assertEquals(6, criticalPath.size());
     }
 
     @Test
@@ -90,16 +90,12 @@ public class CalculateCriticalPathTest {
 
         // 4, 6, 7, 8, 10 -> Critical Path
 
-        assertEquals(0, knotList.get(0).calculateCriticalPath());
-        assertEquals(0, knotList.get(1).calculateCriticalPath());
-        assertEquals(6, knotList.get(2).calculateCriticalPath());
-        assertEquals(0, knotList.get(3).calculateCriticalPath());
-        assertEquals(2, knotList.get(4).calculateCriticalPath());
-        assertEquals(0, knotList.get(5).calculateCriticalPath());
-        assertEquals(0, knotList.get(6).calculateCriticalPath());
-        assertEquals(0, knotList.get(7).calculateCriticalPath());
-        assertEquals(14, knotList.get(8).calculateCriticalPath());
-        assertEquals(0, knotList.get(9).calculateCriticalPath());
+        for (Knot knot : knotList) {
+            if (knot.calculateCriticalPathTwo() != null) {
+                criticalPath.add(knot.calculateCriticalPathTwo());
+            }
+        }
 
+        assertEquals(5, criticalPath.size());
     }
 }

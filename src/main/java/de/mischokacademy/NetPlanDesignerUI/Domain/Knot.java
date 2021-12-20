@@ -132,8 +132,15 @@ public class Knot {
         this.successor = successor;
     }
 
-    public List<Knot> calculateCriticalPath() {
-        List<Knot> criticalPathKnots = new ArrayList<>();
+    public Knot calculateCriticalPathTwo() {
+        if (this.getFreeBuffer() == 0 && this.getTotalBuffer() == 0) {
+            return this;
+        }
+        return null;
+    }
+
+    public List<Knot> calculateCriticalPath(List<Knot> knotList) {
+        List<Knot> criticalPathKnots = knotList;
 
         if (this.getFreeBuffer() == 0 && this.getTotalBuffer() == 0) {
             criticalPathKnots.add(this);

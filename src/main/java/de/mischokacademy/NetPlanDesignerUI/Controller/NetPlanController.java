@@ -78,10 +78,20 @@ public class NetPlanController {
 
     }
 
-    private String validateNotTwoEnds(BindingResult bindingResult, List<Knot> knots) {
+    private void validateNotTwoEnds(List<Knot> knots) {
         Objects.requireNonNull(knots);
 
-        return null;
+        List<Knot> result = new ArrayList<>();
+
+        for (Knot knot : knots) {
+            if (knot.getSuccessor().isEmpty()) {
+                result.add(knot);
+            }
+        }
+
+        if (result.size() > 1) {
+            result.clear();
+        }
     }
 
     private void validate(BindingResult bindingResult, KnotInputForm knotInputForm) {
