@@ -84,4 +84,8 @@ public class NetPlanController {
         return null;
     }
 
+    private void validate(BindingResult bindingResult, KnotInputForm knotInputForm) {
+
+    }
+
 }
