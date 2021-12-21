@@ -134,12 +134,12 @@ public class Knot {
         this.successor = successor;
     }
 
-    public Knot calculateCriticalPath() {
+    public Boolean calculateCriticalPath() {
         if (this.getFreeBuffer() == 0 && this.getTotalBuffer() == 0) {
-            return this;
+            return true;
 
         } else {
-            return null;
+            return false;
         }
     }
 
@@ -147,8 +147,8 @@ public class Knot {
         List<Knot> criticalPath = new ArrayList<>();
 
         for (Knot knot : knotList) {
-            if (knot.calculateCriticalPath() != null) {
-                criticalPath.add(knot.calculateCriticalPath());
+            if (knot.calculateCriticalPath()) {
+                criticalPath.add(knot);
             }
         }
 
