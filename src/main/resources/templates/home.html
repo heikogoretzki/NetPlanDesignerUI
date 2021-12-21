@@ -2,20 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Knot Input Form</title>
 
-    <style>
-        * {
-            background-color: #272b30;
-            color: #717a73;
-            font-family: 'Nunito', sans-serif;
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="homestyle.css">
+
 </head>
 <body>
+
+<div class="container">
+    <div class="title">
+        <h1>Net Plan Designer</h1>
+    </div>
+
+    <div class="content">
+        <h3>Was ist ein Netzplan / die Netzplantechnik?</h3>
+        <p>Die Netzplantechnik verwendet Netzpläne, die eine temporale und finale Verkettung von Aktionen beschreiben.
+            Sie findet ihre Anwendung insbesondere in der Terminplanung von Projekten. Netzpläne wiederum sind die
+            grafischen
+            Abbildungen von Vorgangsketten. Da eine Aktivität mehrere Vorgänger- und ggf. auch Nachfolgeaktivitäten
+            haben kann,
+            entsteht so das Bild eines Netzes von Vorgängen, von dem sich die Bezeichnung ableitet.</p>
+
+        <p>Eine Netzplanung wendet Konzepte der Graphentheorie an. Meist besteht der Netzplan aus einem planaren Graphen
+            mit Knoten
+            und Kanten als Elementen. Die Kanten sind beim Netzplan gerichtet und nicht zyklisch. Es gibt die beiden
+            grundsätzlichen und dualen Varianten</p>
+
+        <ul>
+            <li>
+                Vorgangsknoten-Netzplan[1] (VKN): Bei einem Vorgangsknotennetzplan werden Vorgänge als Knoten
+                dargestellt,
+                aus den Pfeilen
+                sind Anordnungs- und Reihenfolgebeziehungen ersichtlich (Beispiel: Metra-Potenzial-Methode, MPM) und
+            </li>
+            <li>
+                Vorgangspfeil-Netzplan[2] (VPN): Bei einem Vorgangspfeilnetzplan werden Vorgänge als Pfeile dargestellt,
+                die
+                logische Reihenfolge
+                geht aus der Anordnung der Knoten (Beginn/Ende der Vorgänge) hervor (Beispiel: Methode des kritischen
+                Pfades, CPM).
+            </li>
+        </ul>
+
+        <p>Heute wird im Bauwesen und in Projekten des Anlagenbaus hauptsächlich der Vorgangsknotennetzplan
+            verwendet, in dem die Vorgänge
+            durch die Knoten repräsentiert werden, die durch Kanten verbunden sind. Die Grundlage für diese
+            Darstellungsform war die
+            Metra-Potenzial-Methode. Die Kanten beschreiben verschiedene Anordnungsbeziehungen: Ende-Anfang-,
+            Anfang-Anfang-, Ende-Ende- und
+            Anfang-Ende-Beziehungen. Außerdem gibt es die Darstellungsform des Vorgangspfeilnetzplans, auch bekannt
+            unter der Methode des
+            kritischen Pfades.</p>
+
+        <span class="left">
+            <button type="button" onclick="location.href='https://de.wikipedia.org/wiki/Netzplantechnik'">Netzplan-Wiki</button>
+        </span>
+        <span class="right">
+            <button type="button" onclick="location.href='http://localhost:8080/input'">Netzplan eingeben</button>
+        </span>
+    </div>
+
+
+</div>
 
 </body>
 </html>

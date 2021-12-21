@@ -1,152 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Knot Input Form</title>
 
-        <style>
-            * {
-                background-color: #272b30;
-                color: #717a73;
-                font-family: 'Nunito', sans-serif;
-                box-sizing: border-box;
-                padding: 0;
-                margin: auto;
-            }
-
-            html, body {
-                margin: 0;
-                padding: 0;
-                height: 100%;
-                width: 100%;
-                position: relative;
-            }
-
-            button {
-                background-color: #8998ab;
-                border-radius: 5px;
-                color: #4f5863;
-                font-size: 16px;
-                font-weight: bold;
-                font-family: 'Nunito', sans-serif;
-                padding: 5px;
-            }
-
-            button:hover {
-                background-color: #4f5863;
-                color: #8998ab;
-            }
-
-            .container {
-                display: grid;
-                grid-template-columns: 25vw 75vw;
-                grid-template-rows: 15vh 75vh 10vh;
-                grid-template-areas:
-                "title title"
-                "process table"
-                "footer footer";
-            }
-
-            .title {
-                grid-area: title;
-                margin: auto;
-            }
-
-            .process {
-                grid-area: process;
-                text-align: center;
-                margin-top: 6rem;
-            }
-
-            .table {
-                grid-area: table;
-                margin-top: 3rem;
-                overflow: auto;
-            }
-
-            .footer {
-                grid-area: footer;
-                padding-top: 2rem;
-                padding-left: ;
-            }
-
-            .processInput {
-                grid-area: inputField;
-            }
-
-            .buttonProcess {
-                grid-area: buttonProcess;
-            }
-
-            h1 {
-                font-size: 4rem;
-                font-style: italic;
-                font-weight: bold;
-            }
-
-            label {
-                display: inline-block;
-                width: 12rem;
-                padding: 1rem;
-                font-size: 1rem;
-                text-align: left;
-            }
-
-            select {
-                width: 14rem;
-                font-size: 1rem;
-                border-radius: 5px;
-            }
-
-            input {
-                width: 14rem;
-                font-size: 1rem;
-                border-radius: 5px;
-            }
-
-            table {
-                table-layout: fixed;
-                border-collapse: collapse;
-                border-style: hidden;
-                margin: 0 auto;
-            }
-
-            td, th {
-                border: 1px solid #4f5863;
-                word-wrap: break-word;
-            }
-
-            tbody {
-                display: block;
-            }
-
-            thead {
-                display: block;
-            }
-
-            .tableNumber {
-                width: 5rem;
-                text-align: center;
-                padding: 6px;
-            }
-
-            .tableDescriptionHead {
-                width: 30rem;
-                padding: 6px;
-            }
-
-            .tableDescription {
-                width: 30rem;
-                word-wrap: break-word;
-                padding-left: 1rem;
-            }
-
-            .tablePredecessor {
-                width: 10rem;
-                text-align: center;
-                padding: 6px;
-            }
-        </style>
+    <link rel="stylesheet" href="knotInputForm.css">
 
 </head>
 <body>
@@ -156,87 +14,93 @@
         <h1>Net Plan Designer</h1>
     </div>
 
-    <div class="process">
-        <div class="processInput">
-            <div>
-                <label for="operationNumber">Nr.</label>
-                <input id="operationNumber" type="number">
+    <form method="post" action="input" th:object="${knotInputForm}">
+        <div class="process">
+            <div class="processInput">
+                <div>
+                    <label for="operationNumber">Nr.</label>
+                    <input id="operationNumber" type="number" placeholder="1" readonly th:value="${operationNumber}">
+                </div>
+
+                <div>
+                    <label for="operationDescription">Bezeichnung*</label>
+                    <input id="operationDescription" type="text" th:field="*{operationDescription}">
+                </div>
+
+                <div>
+                    <label for="durationInMinutes">Dauer (Minuten)*</label>
+                    <input id="durationInMinutes" type="number" th:field="*{durationInMinutes}">
+                </div>
+
+                <div>
+                    <label for="predecessorOneListIndex">Vorgänger 1</label>
+                    <select id="predecessorOneListIndex" th:field="*{predecessorOneListIndex}">
+                        <option value=""></option>
+                        <option th:each="knot : ${knotInputFormList}"
+                                th:value="${knotInputFormList.indexOf(knot)}"
+                                th:text="${(knotInputFormList.indexOf(knot)) + ' (' + knot.operationDescription + ')'}"></option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="predecessorTwoListIndex">Vorgänger 2</label>
+                    <select id="predecessorTwoListIndex" th:field="*{predecessorTwoListIndex}">
+                        <option value=""></option>
+                        <option th:each="knot : ${knotInputFormList}"
+                                th:value="${knotInputFormList.indexOf(knot)}"
+                                th:text="${(knotInputFormList.indexOf(knot) + 1) + ' (' + knot.operationDescription + ')'}"></option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="predecessorThreeListIndex">Vorgänger 3</label>
+                    <select id="predecessorThreeListIndex" th:field="*{predecessorThreeListIndex}">
+                        <option value=""></option>
+                        <option th:each="knot : ${knotInputFormList}"
+                                th:value="${knotInputFormList.indexOf(knot)}"
+                                th:text="${(knotInputFormList.indexOf(knot) + 1) + ' (' + knot.operationDescription + ')'}"></option>
+                    </select>
+                </div>
             </div>
 
             <div>
-                <label for="operationDescription">Bezeichnung*</label>
-                <input id="operationDescription" type="text">
+                <button id="reset-button" type="reset">Löschen</button>
+                <button id="submit-button" type="submit">Speichern</button>
+                <br>
+                <button id="netPlan-button">Netzplan erstellen</button>
             </div>
 
-            <div>
-                <label for="durationInMinutes">Dauer (Minuten)*</label>
-                <input id="durationInMinutes" type="number">
-            </div>
-
-            <div>
-                <label for="predecessorOneListIndex">Vorgänger 1</label>
-                <select id="predecessorOneListIndex">
-                    <option value=""></option>
-                </select>
-            </div>
-
-            <div>
-                <label for="predecessorTwoListIndex">Vorgänger 2</label>
-                <select id="predecessorTwoListIndex">
-                    <option value=""></option>
-                </select>
-            </div>
-
-            <div>
-                <label for="predecessorThreeListIndex">Vorgänger 3</label>
-                <select id="predecessorThreeListIndex">
-                    <option value=""></option>
-                </select>
-            </div>
         </div>
 
-        <div class="buttonProcess">
-            <label for="reset-button"></label>
-            <button id="reset-button" type="reset">Löschen</button>
+        <div class="table">
+            <table>
+                <thead>
+                <tr>
+                    <th class="tableNumber">Nr.</th>
+                    <th class="tableDescriptionHead">Bezeichnung</th>
+                    <th class="tablePredecessor">Dauer (Minuten)</th>
+                    <th class="tablePredecessor">Vorgänger 1</th>
+                    <th class="tablePredecessor">Vorgänger 2</th>
+                    <th class="tablePredecessor">Vorgänger 3</th>
+                </tr>
+                </thead>
 
-            <label for="submit-button"></label>
-            <button id="submit-button" type="submit">Speichern</button>
-
-            <label for="netPlan-button"></label>
-            <button id="netPlan-button">Netzplan erstellen</button>
+                <tbody>
+                <tr>
+                    <td class="tableNumber">1</td>
+                    <td class="tableDescription">Test</td>
+                    <td class="tablePredecessor">1</td>
+                    <td class="tablePredecessor">0</td>
+                    <td class="tablePredecessor">0</td>
+                    <td class="tablePredecessor">0</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-
-    </div>
-
-    <div class="table">
-        <table>
-            <thead>
-            <tr>
-                <th class="tableNumber">Nr.</th>
-                <th class="tableDescriptionHead">Bezeichnung</th>
-                <th class="tablePredecessor">Dauer (Minuten)</th>
-                <th class="tablePredecessor">Vorgänger 1</th>
-                <th class="tablePredecessor">Vorgänger 2</th>
-                <th class="tablePredecessor">Vorgänger 3</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            <tr>
-                <td class="tableNumber">1</td>
-                <td class="tableDescription">Test</td>
-                <td class="tablePredecessor">1</td>
-                <td class="tablePredecessor">0</td>
-                <td class="tablePredecessor">0</td>
-                <td class="tablePredecessor">0</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+    </form>
 
     <div class="footer">
-        <label for="home"></label>
-        <button type="button" id="home" onclick="location.href='http://localhost:8080'">Home</button>
+        <button type="button" onclick="location.href='http://localhost:8080'">Home</button>
     </div>
 </div>
 

@@ -8,6 +8,9 @@ public class KnotInputForm {
     private Integer predecessorTwoListIndex;
     private Integer predecessorThreeListIndex;
 
+    public KnotInputForm() {
+    }
+
     public KnotInputForm(int operationNumber, String operationDescription, int durationInMinutes, Integer predecessorOneListIndex, Integer predecessorTwoListIndex, Integer predecessorThreeListIndex) {
         this.operationNumber = operationNumber;
         this.operationDescription = operationDescription;

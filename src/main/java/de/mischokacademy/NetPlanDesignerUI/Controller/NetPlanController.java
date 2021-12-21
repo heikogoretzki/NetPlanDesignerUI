@@ -27,11 +27,21 @@ public class NetPlanController {
     @GetMapping("input")
     public String getKnotFormInput(Model model) {
 
+        model.addAttribute("knotInputForm", new KnotInputForm());
+        model.addAttribute("knotInputFormList", knotInputFormList);
+        model.addAttribute("knots", knots);
+
         return "knotInputForm";
     }
 
     @PostMapping("input")
     public String saveKnotFormInput(@Valid KnotInputForm knotInputForm, BindingResult bindingResult, Model model) {
+
+        convertKnotInputFormListToKnotList(knotInputFormList);
+
+        model.addAttribute("knotInputForm", new KnotInputForm());
+        model.addAttribute("knotInputFormList", knotInputFormList);
+        model.addAttribute("knots", knots);
 
         return "knotInputForm";
     }
@@ -78,7 +88,7 @@ public class NetPlanController {
 
     }
 
-    private void validateNotTwoEnds(List<Knot> knots) {
+    public static Boolean validateNotTwoEnds(List<Knot> knots) {
         Objects.requireNonNull(knots);
 
         List<Knot> result = new ArrayList<>();
@@ -89,9 +99,7 @@ public class NetPlanController {
             }
         }
 
-        if (result.size() > 1) {
-            result.clear();
-        }
+        return result.size() <= 1;
     }
 
     private void validate(BindingResult bindingResult, KnotInputForm knotInputForm) {

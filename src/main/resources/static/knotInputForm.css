@@ -1,0 +1,168 @@
+* {
+    background-color: #272b30;
+    color: #717a73;
+    font-family: 'Monospaced', sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: auto;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+button {
+    background-color: #8998ab;
+    border-radius: 5px;
+    color: #4f5863;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+    padding: 5px;
+}
+
+button:hover {
+    background-color: #4f5863;
+    color: #8998ab;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 25vw 75vw;
+    grid-template-rows: 12vh 78vh 10vh;
+    grid-template-areas:
+                "title title"
+                "process table"
+                "footer footer";
+    justify-content: center;
+}
+
+.title {
+    grid-area: title;
+    margin: auto;
+}
+
+.process {
+    grid-area: process;
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 4rem;
+    border: 3px solid #717a73;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 35rem;
+    width: 20rem;
+    box-shadow: 5px 5px;
+}
+
+.table {
+    grid-area: table;
+    margin-top: 3rem;
+    overflow: auto;
+    border: 3px solid #717a73;
+    border-radius: 20px;
+    height: 35rem;
+    box-shadow: 5px 5px;
+}
+
+.footer {
+    grid-area: footer;
+}
+
+.processInput {
+    grid-area: inputField;
+}
+
+#reset-button {
+    float: left;
+    margin-left: 4rem;
+    margin-top: 1rem;
+}
+
+#submit-button {
+    float: right;
+    margin-top: 1rem;
+    margin-right: 4rem;
+}
+
+#netPlan-button {
+    margin-top: 1rem;
+}
+
+h1 {
+    font-size: 4rem;
+    font-style: italic;
+    font-weight: bold;
+}
+
+label {
+    display: inline-block;
+    width: 10rem;
+    padding: 1rem;
+    font-size: 1rem;
+    text-align: left;
+}
+
+select {
+    width: 10rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    background-color: #717a73;
+}
+
+input {
+    width: 10rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    background-color: #717a73;
+}
+
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-style: hidden;
+    margin: 0 auto;
+}
+
+td, th {
+    border: 1px solid #4f5863;
+    word-wrap: break-word;
+}
+
+tbody {
+    display: block;
+}
+
+thead {
+    display: block;
+}
+
+.tableNumber {
+    width: 3rem;
+    text-align: center;
+    padding: 3px;
+}
+
+.tableDescriptionHead {
+    width: 20rem;
+    padding: 6px;
+    font-size: 1rem;
+}
+
+.tableDescription {
+    width: 20rem;
+    word-wrap: break-word;
+    padding-left: 1rem;
+    font-size: 1rem;
+}
+
+.tablePredecessor {
+    width: 7rem;
+    text-align: center;
+    padding: 6px;
+    font-size: 1rem;
+}
