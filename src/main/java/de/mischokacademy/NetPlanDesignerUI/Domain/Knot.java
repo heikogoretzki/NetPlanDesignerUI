@@ -1,7 +1,9 @@
 package de.mischokacademy.NetPlanDesignerUI.Domain;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Knot {
     private int operationNumber;
@@ -139,6 +141,18 @@ public class Knot {
         } else {
             return null;
         }
+    }
+
+    public static List<Knot> getCriticalPath(List<Knot> knotList) {
+        List<Knot> criticalPath = new ArrayList<>();
+
+        for (Knot knot : knotList) {
+            if (knot.calculateCriticalPath() != null) {
+                criticalPath.add(knot.calculateCriticalPath());
+            }
+        }
+
+        return criticalPath;
     }
 
     private int getMaximumOfEarliestEndOfPredecessors() {

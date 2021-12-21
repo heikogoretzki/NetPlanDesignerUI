@@ -67,46 +67,28 @@ public class CalculateCriticalPathTest {
 
     @Test
     void CriticalPathKnotTest() {
-        List<Knot> knots = knots();
-        List<Knot> criticalPath = new ArrayList<>();
-
         // 1, 2, 3, 6, 9, 10
 
-        for (Knot knot : knots) {
-            if (knot.calculateCriticalPath() != null) {
-                criticalPath.add(knot.calculateCriticalPath());
-            }
-        }
+        assertEquals(6, Knot.getCriticalPath(knots()).size());
 
-        assertEquals(6, criticalPath.size());
-
-        assertAll(() -> assertEquals(1, criticalPath.get(0).getOperationNumber()),
-                  () -> assertEquals(2, criticalPath.get(1).getOperationNumber()),
-                  () -> assertEquals(3, criticalPath.get(2).getOperationNumber()),
-                  () -> assertEquals(6, criticalPath.get(3).getOperationNumber()),
-                  () -> assertEquals(9, criticalPath.get(4).getOperationNumber()),
-                  () -> assertEquals(10, criticalPath.get(5).getOperationNumber()));
+        assertAll(() -> assertEquals(1, Knot.getCriticalPath(knots()).get(0).getOperationNumber()),
+                () -> assertEquals(2, Knot.getCriticalPath(knots()).get(1).getOperationNumber()),
+                () -> assertEquals(3, Knot.getCriticalPath(knots()).get(2).getOperationNumber()),
+                () -> assertEquals(6, Knot.getCriticalPath(knots()).get(3).getOperationNumber()),
+                () -> assertEquals(9, Knot.getCriticalPath(knots()).get(4).getOperationNumber()),
+                () -> assertEquals(10, Knot.getCriticalPath(knots()).get(5).getOperationNumber()));
     }
 
     @Test
     void CriticalPathKnotListTest() {
-        List<Knot> knotList = knotList();
-        List<Knot> criticalPath = new ArrayList<>();
-
         // 4, 6, 7, 8, 10 -> Critical Path
 
-        for (Knot knot : knotList) {
-            if (knot.calculateCriticalPath() != null) {
-                criticalPath.add(knot.calculateCriticalPath());
-            }
-        }
+        assertEquals(5, Knot.getCriticalPath(knotList()).size());
 
-        assertEquals(5, criticalPath.size());
-
-        assertAll(() -> assertEquals(4, criticalPath.get(0).getOperationNumber()),
-                  () -> assertEquals(6, criticalPath.get(1).getOperationNumber()),
-                  () -> assertEquals(7, criticalPath.get(2).getOperationNumber()),
-                  () -> assertEquals(8, criticalPath.get(3).getOperationNumber()),
-                  () -> assertEquals(10, criticalPath.get(4).getOperationNumber()));
+        assertAll(() -> assertEquals(4, Knot.getCriticalPath(knotList()).get(0).getOperationNumber()),
+                () -> assertEquals(6, Knot.getCriticalPath(knotList()).get(1).getOperationNumber()),
+                () -> assertEquals(7, Knot.getCriticalPath(knotList()).get(2).getOperationNumber()),
+                () -> assertEquals(8, Knot.getCriticalPath(knotList()).get(3).getOperationNumber()),
+                () -> assertEquals(10, Knot.getCriticalPath(knotList()).get(4).getOperationNumber()));
     }
 }
