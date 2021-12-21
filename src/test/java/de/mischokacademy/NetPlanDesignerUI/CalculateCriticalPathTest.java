@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalculateCriticalPathTest {
@@ -71,16 +72,20 @@ public class CalculateCriticalPathTest {
 
         // 1, 2, 3, 6, 9, 10
 
-
-
-
-//        for (Knot knot : knots) {
-//            if (knot.calculateCriticalPathTwo() != null) {
-//                criticalPath.add(knot.calculateCriticalPathTwo());
-//            }
-//        }
+        for (Knot knot : knots) {
+            if (knot.calculateCriticalPath() != null) {
+                criticalPath.add(knot.calculateCriticalPath());
+            }
+        }
 
         assertEquals(6, criticalPath.size());
+
+        assertAll(() -> assertEquals(1, criticalPath.get(0).getOperationNumber()),
+                  () -> assertEquals(2, criticalPath.get(1).getOperationNumber()),
+                  () -> assertEquals(3, criticalPath.get(2).getOperationNumber()),
+                  () -> assertEquals(6, criticalPath.get(3).getOperationNumber()),
+                  () -> assertEquals(9, criticalPath.get(4).getOperationNumber()),
+                  () -> assertEquals(10, criticalPath.get(5).getOperationNumber()));
     }
 
     @Test
@@ -91,11 +96,17 @@ public class CalculateCriticalPathTest {
         // 4, 6, 7, 8, 10 -> Critical Path
 
         for (Knot knot : knotList) {
-            if (knot.calculateCriticalPathTwo() != null) {
-                criticalPath.add(knot.calculateCriticalPathTwo());
+            if (knot.calculateCriticalPath() != null) {
+                criticalPath.add(knot.calculateCriticalPath());
             }
         }
 
         assertEquals(5, criticalPath.size());
+
+        assertAll(() -> assertEquals(4, criticalPath.get(0).getOperationNumber()),
+                  () -> assertEquals(6, criticalPath.get(1).getOperationNumber()),
+                  () -> assertEquals(7, criticalPath.get(2).getOperationNumber()),
+                  () -> assertEquals(8, criticalPath.get(3).getOperationNumber()),
+                  () -> assertEquals(10, criticalPath.get(4).getOperationNumber()));
     }
 }

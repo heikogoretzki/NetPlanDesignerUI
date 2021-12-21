@@ -132,21 +132,13 @@ public class Knot {
         this.successor = successor;
     }
 
-    public Knot calculateCriticalPathTwo() {
+    public Knot calculateCriticalPath() {
         if (this.getFreeBuffer() == 0 && this.getTotalBuffer() == 0) {
             return this;
+
+        } else {
+            return null;
         }
-        return null;
-    }
-
-    public List<Knot> calculateCriticalPath(List<Knot> knotList) {
-        List<Knot> criticalPathKnots = knotList;
-
-        if (this.getFreeBuffer() == 0 && this.getTotalBuffer() == 0) {
-            criticalPathKnots.add(this);
-        }
-
-        return criticalPathKnots;
     }
 
     private int getMaximumOfEarliestEndOfPredecessors() {
