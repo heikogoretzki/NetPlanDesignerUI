@@ -1,10 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Output Table</title>
+
+    <!--    <link rel="stylesheet" href="knotInputForm.css">-->
+
+    <style>
+        * {
+            background-color: #272b30;
+            color: #717a73;
+            font-family: 'Monospaced', sans-serif;
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        html, body {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+
+        }
+
+        button {
+            background-color: #8998ab;
+            border-radius: 1rem;
+            color: #4f5863;
+            font-size: 0.8rem;
+            font-weight: bold;
+            font-family: 'Monospaced', sans-serif;
+            padding: 5px;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background-color: #4f5863;
+            color: #8998ab;
+        }
+
+        .titleHeader {
+            margin-top: 3rem;
+            margin-bottom: 4rem;
+            float: top;
+            font-size: 1.5rem;
+        }
+
+        input, select {
+            width: 10rem;
+            padding: 3px;
+            color: white;
+            font-size: 0.7rem;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        table {
+            table-layout: fixed;
+            border-collapse: collapse;
+            border-style: hidden;
+            margin: 0 auto;
+            width: 90%;
+            font-size: 0.9rem;
+        }
+
+        td, th {
+            border: 1px solid #4f5863;
+            word-wrap: break-word;
+            text-align: left;
+        }
+
+        .table-nr {
+            width: 2.5rem;
+        }
+
+        .table-description {
+            width: 12rem;
+        }
+
+        .table-duration {
+            width: 8rem;
+        }
+
+        .table-predecessor {
+            width: 5rem;
+        }
+    </style>
+
 </head>
 <body>
+
+<div class="titleHeader">
+    <h1>Net Plan Designer</h1>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th class="table-nr">#</th>
+        <th class="table-description">Bezeichnung</th>
+        <th class="table-duration">Dauer (Minuten)</th>
+        <th class="table-predecessor">Vorgänger</th>
+        <th class="table-predecessor">Nachfolger</th>
+        <th class="table-buffer">freier Puffer</th>
+        <th class="table-buffer">Gesamtpuffer</th>
+        <th class="table-duration">frühester Start</th>
+        <th class="table-duration">frühestes Ende</th>
+        <th class="table-duration">spätester Start</th>
+        <th class="table-duration">spätestes Ende</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="knot : ${knots}">
+        <th class="table-nr" th:text="${knot.getOperationNumber}"></th>
+        <td class="table-description" th:text="${knot.getOperationDescription}"></td>
+        <td class="table-duration" th:text="${knot.getDurationInMinutes}"></td>
+        <td><span th:each="predecessor : ${knot.getPredecessor}" th:text="${knots.indexOf(predecessor) + 1} + ' '"></span></td>
+<!--        <td class="table-predecessor" th:text="${knot.getPredecessor}"> Vorgäner-->
+        <td><span th:each="successor : ${knot.getSuccessor}" th:text="${knots.indexOf(successor) + 1} + ' '"></span></td>
+<!--        <td class="table-predecessor" th:text="${knot.getSuccessor}">   Nachfolger-->
+        <td class="table-predecessor" th:text="${knot.getFreeBuffer}">   freier Puffer
+        <td class="table-predecessor" th:text="${knot.getTotalBuffer}">   Gesamtpuffer
+        <td class="table-predecessor" th:text="${knot.getEarliestStart}">   früh Start
+        <td class="table-predecessor" th:text="${knot.getEarliestEnd}">   früh Ende
+        <td class="table-predecessor" th:text="${knot.getLatestStart}">   spät Start
+        <td class="table-predecessor" th:text="${knot.getLatestEnd}">   spät Ende
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>

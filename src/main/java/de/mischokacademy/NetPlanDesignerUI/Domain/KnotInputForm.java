@@ -20,6 +20,10 @@ public class KnotInputForm {
         this.predecessorThreeListIndex = predecessorThreeListIndex;
     }
 
+    public KnotInputForm(int operationNumber) {
+        this.operationNumber = operationNumber;
+    }
+
     public int getOperationNumber() {
         return operationNumber;
     }

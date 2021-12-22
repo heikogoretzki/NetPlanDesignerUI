@@ -16,7 +16,7 @@ import java.util.Objects;
 @Controller
 public class NetPlanController {
     private static final List<KnotInputForm> knotInputFormList = new ArrayList<>();
-    private static final List<Knot> knots = new ArrayList<>();
+    private static List<Knot> knots = new ArrayList<>();
 
     @GetMapping("/")
     public String getStartPage() {
@@ -26,28 +26,35 @@ public class NetPlanController {
 
     @GetMapping("input")
     public String getKnotFormInput(Model model) {
+        Objects.requireNonNull(model);
 
-        model.addAttribute("knotInputForm", new KnotInputForm());
+        model.addAttribute("knotInputForm", new KnotInputForm(knotInputFormList.size() + 1));
         model.addAttribute("knotInputFormList", knotInputFormList);
-        model.addAttribute("knots", knots);
 
         return "knotInputForm";
     }
 
     @PostMapping("input")
     public String saveKnotFormInput(@Valid KnotInputForm knotInputForm, BindingResult bindingResult, Model model) {
+        Objects.requireNonNull(bindingResult);
+        Objects.requireNonNull(knotInputForm);
+        Objects.requireNonNull(model);
 
-        convertKnotInputFormListToKnotList(knotInputFormList);
+        knotInputFormList.add(knotInputForm);
 
-        model.addAttribute("knotInputForm", new KnotInputForm());
+        model.addAttribute("knotInputForm", new KnotInputForm(knotInputFormList.size() + 1));
         model.addAttribute("knotInputFormList", knotInputFormList);
-        model.addAttribute("knots", knots);
 
         return "knotInputForm";
     }
 
     @GetMapping("table")
     public String getNetPlanOutputTable(Model model) {
+
+        knots = convertKnotInputFormListToKnotList(knotInputFormList);
+        model.addAttribute("knotInputForm", new KnotInputForm());
+        model.addAttribute("knotInputFormList", knotInputFormList);
+        model.addAttribute("knots", knots);
 
         return "outputTable";
     }

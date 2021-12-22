@@ -4,25 +4,26 @@
     font-family: 'Monospaced', sans-serif;
     box-sizing: border-box;
     padding: 0;
-    margin: auto;
+    margin: 0;
 }
 
 html, body {
+    position: relative;
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
-    position: relative;
 }
 
 button {
     background-color: #8998ab;
-    border-radius: 5px;
+    border-radius: 1rem;
     color: #4f5863;
-    font-size: 16px;
+    font-size: 0.8rem;
     font-weight: bold;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Monospaced', sans-serif;
     padding: 5px;
+    margin-top: 1rem;
 }
 
 button:hover {
