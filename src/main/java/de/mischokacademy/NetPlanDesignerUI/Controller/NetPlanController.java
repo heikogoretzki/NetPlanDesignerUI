@@ -45,10 +45,6 @@ public class NetPlanController {
         Objects.requireNonNull(knotInputForm);
         Objects.requireNonNull(model);
 
-        if (!bindingResult.hasErrors()) {
-            return "knotInputForm";
-        }
-
         knotInputFormList.add(knotInputForm);
 
         model.addAttribute("knotInputForm", new KnotInputForm(knotInputFormList.size() + 1));

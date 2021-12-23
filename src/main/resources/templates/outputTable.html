@@ -54,7 +54,7 @@
 </div>
 
 <div class="total-duration">
-    <span>Gesamtdauer: <span th:text="${knots.get(knots.size() - 1).getEarliestEnd()}">200</span></span>
+    <span>Gesamtdauer: <span th:text="${knots.get(knots.size() - 1).getEarliestEnd()} + ' Minuten'"></span></span>
 </div>
 
 <div class="output-table">
