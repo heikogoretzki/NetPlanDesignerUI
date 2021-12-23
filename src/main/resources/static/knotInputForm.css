@@ -13,6 +13,8 @@ html, body {
     padding: 0;
     height: 100%;
     width: 100%;
+    text-align: center;
+    overflow: hidden;
 }
 
 button {
@@ -31,6 +33,13 @@ button:hover {
     color: #8998ab;
 }
 
+.titleHeader {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    float: top;
+    font-size: 1.5rem;
+}
+
 .flex-box {
     display: flex;
     flex-direction: column;
@@ -38,13 +47,6 @@ button:hover {
     height: 100%;
     min-height: 100%;
     align-items: center;
-}
-
-.titleHeader {
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    float: top;
-    font-size: 1.5rem;
 }
 
 input, select {
@@ -57,27 +59,27 @@ input, select {
 }
 
 .leftContainer {
-    border: 1px solid white;
+    border: 3px solid #8998ab;
     border-radius: 2rem;
     box-shadow: 5px 7px;
     float: left;
     width: 22rem;
     min-width: 22rem;
-    height: 20rem;
-    min-height: 20rem;
+    height: 22rem;
+    min-height: 22rem;
     margin-right: 1rem;
     padding: 1rem;
 }
 
 .rightContainer {
-    border: 1px solid white;
+    border: 3px solid #8998ab;
     border-radius: 2rem;
     box-shadow: 5px 7px;
     float: left;
     width: 40rem;
     min-width: 40rem;
-    height: 20rem;
-    min-height: 20rem;
+    height: 22rem;
+    min-height: 22rem;
     margin-left: 1rem;
     padding: 1rem;
     overflow: auto;
@@ -137,3 +139,79 @@ td, th {
 .table-predecessor {
     width: 5rem;
 }
+
+
+body {
+    line-height: 2rem;
+    word-wrap:break-word !important;
+    justify-content: center;
+}
+
+h3 a {
+    color: #FFF;
+}
+
+a {
+    color: #FFF;
+}
+
+#nav {
+    margin: 0 auto;
+}
+
+nav {
+    margin: 2rem 0;
+    background-color: #FFF;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+}
+
+nav ul li {
+    display:inline-block;
+    background-color: #272b30;
+    padding: 0 1rem;
+}
+
+nav a {
+    display:block;
+    padding:0 10px;
+    color:#717a73;
+    line-height: 3rem;
+    text-decoration:none;
+}
+
+nav a:hover {
+    background-color: #4f5863;
+}
+
+nav ul ul {
+    display: none;
+    position: absolute;
+    top: 2.5rem;
+}
+
+nav ul li:hover > ul {
+    display: block;
+}
+
+nav ul ul li {
+    width: 12rem;
+    float:none;
+    display:list-item;
+    position: relative;
+}
+
+nav ul ul ul li {
+    width: 12rem;
+    position: relative;
+    top: -2.2rem;
+    left: 8rem;
+}
+
+li > a:after { content:  ' +'; }
+li > a:only-child:after { content: ''; }

@@ -1,8 +1,16 @@
 package de.mischokacademy.NetPlanDesignerUI.Domain;
 
+import javax.validation.constraints.*;
+
 public class KnotInputForm {
     private int operationNumber;
+
+    @NotBlank()
+    @Size(min = 1, max = 36)
     private String operationDescription;
+
+    @Min(value = 1)
+    @Max(value = 20160) // 2 Wochen
     private int durationInMinutes;
     private Integer predecessorOneListIndex;
     private Integer predecessorTwoListIndex;

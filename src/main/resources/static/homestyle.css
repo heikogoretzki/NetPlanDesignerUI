@@ -13,6 +13,8 @@ html, body {
     padding: 0;
     height: 100%;
     width: 100%;
+    text-align: center;
+    overflow: hidden;
 }
 
 button {
@@ -31,29 +33,32 @@ button:hover {
     color: #8998ab;
 }
 
-.container {
-    display: grid;
-    grid-template-rows: 12vh 50vh 10vh;
-    grid-template-areas:
-                "title"
-                "content"
-                "footer";
-    justify-content: center;
+.titleHeader {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    float: top;
+    font-size: 1.5rem;
 }
 
-.title {
-    grid-area: title;
-    margin: auto;
+.flex-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    align-items: center;
 }
 
 .content {
     grid-area: content;
     border: 3px solid #717a73;
     width: 40rem;
-    height: 48rem;
+    min-height: 18rem;
+    max-height: 48rem;
     border-radius: 2rem;
     box-shadow: 5px 7px;
     overflow: auto;
+    text-align: left;
 }
 
 h1 {
@@ -84,3 +89,79 @@ span {
     float: right;
     margin-right: 2rem;
 }
+
+
+
+body {
+    line-height: 2rem;
+    word-wrap:break-word !important;
+}
+
+h3 a {
+    color: #FFF;
+}
+
+a {
+    color: #FFF;
+}
+
+#nav {
+    margin: 0 auto;
+}
+
+nav {
+    margin: 2rem 0;
+    background-color: #FFF;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+}
+
+nav ul li {
+    display:inline-block;
+    background-color: #272b30;
+    padding: 0 1rem;
+}
+
+nav a {
+    display:block;
+    padding:0 10px;
+    color:#717a73;
+    line-height: 3rem;
+    text-decoration:none;
+}
+
+nav a:hover {
+    background-color: #4f5863;
+}
+
+nav ul ul {
+    display: none;
+    position: absolute;
+    top: 2.5rem;
+}
+
+nav ul li:hover > ul {
+    display: block;
+}
+
+nav ul ul li {
+    width: 12rem;
+    float:none;
+    display:list-item;
+    position: relative;
+}
+
+nav ul ul ul li {
+    width: 12rem;
+    position: relative;
+    top: -2.2rem;
+    left: 8rem;
+}
+
+li > a:after { content:  ' +'; }
+li > a:only-child:after { content: ''; }

@@ -16,12 +16,17 @@ import java.util.Objects;
 @Controller
 public class NetPlanController {
     private static final List<KnotInputForm> knotInputFormList = new ArrayList<>();
-    private static List<Knot> knots = new ArrayList<>();
 
     @GetMapping("/")
     public String getStartPage() {
 
         return "home";
+    }
+
+    @GetMapping("about")
+    public String getAboutPage() {
+
+        return "about";
     }
 
     @GetMapping("input")
@@ -40,6 +45,10 @@ public class NetPlanController {
         Objects.requireNonNull(knotInputForm);
         Objects.requireNonNull(model);
 
+        if (!bindingResult.hasErrors()) {
+            return "knotInputForm";
+        }
+
         knotInputFormList.add(knotInputForm);
 
         model.addAttribute("knotInputForm", new KnotInputForm(knotInputFormList.size() + 1));
@@ -50,8 +59,9 @@ public class NetPlanController {
 
     @GetMapping("table")
     public String getNetPlanOutputTable(Model model) {
+        Objects.requireNonNull(model);
 
-        knots = convertKnotInputFormListToKnotList(knotInputFormList);
+        List<Knot> knots = convertKnotInputFormListToKnotList(knotInputFormList);
         model.addAttribute("knotInputForm", new KnotInputForm());
         model.addAttribute("knotInputFormList", knotInputFormList);
         model.addAttribute("knots", knots);
@@ -91,10 +101,7 @@ public class NetPlanController {
         return result;
     }
 
-    private void calculateNetPlanResults(List<Knot> knots) {
-
-    }
-
+    @org.jetbrains.annotations.NotNull
     public static Boolean validateNotTwoEnds(List<Knot> knots) {
         Objects.requireNonNull(knots);
 
@@ -107,10 +114,6 @@ public class NetPlanController {
         }
 
         return result.size() <= 1;
-    }
-
-    private void validate(BindingResult bindingResult, KnotInputForm knotInputForm) {
-
     }
 
 }

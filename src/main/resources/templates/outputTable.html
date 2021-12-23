@@ -4,91 +4,7 @@
     <meta charset="UTF-8">
     <title>Output Table</title>
 
-    <!--    <link rel="stylesheet" href="knotInputForm.css">-->
-
-    <style>
-        * {
-            background-color: #272b30;
-            color: #717a73;
-            font-family: 'Monospaced', sans-serif;
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-        }
-
-        html, body {
-            position: relative;
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            text-align: center;
-
-        }
-
-        button {
-            background-color: #8998ab;
-            border-radius: 1rem;
-            color: #4f5863;
-            font-size: 0.8rem;
-            font-weight: bold;
-            font-family: 'Monospaced', sans-serif;
-            padding: 5px;
-            margin-top: 1rem;
-        }
-
-        button:hover {
-            background-color: #4f5863;
-            color: #8998ab;
-        }
-
-        .titleHeader {
-            margin-top: 3rem;
-            margin-bottom: 4rem;
-            float: top;
-            font-size: 1.5rem;
-        }
-
-        input, select {
-            width: 10rem;
-            padding: 3px;
-            color: white;
-            font-size: 0.7rem;
-            border-radius: 5px;
-            margin-top: 5px;
-        }
-
-        table {
-            table-layout: fixed;
-            border-collapse: collapse;
-            border-style: hidden;
-            margin: 0 auto;
-            width: 90%;
-            font-size: 0.9rem;
-        }
-
-        td, th {
-            border: 1px solid #4f5863;
-            word-wrap: break-word;
-            text-align: left;
-        }
-
-        .table-nr {
-            width: 2.5rem;
-        }
-
-        .table-description {
-            width: 12rem;
-        }
-
-        .table-duration {
-            width: 8rem;
-        }
-
-        .table-predecessor {
-            width: 5rem;
-        }
-    </style>
+    <link rel="stylesheet" href="output.css">
 
 </head>
 <body>
@@ -97,41 +13,87 @@
     <h1>Net Plan Designer</h1>
 </div>
 
-<table>
-    <thead>
-    <tr>
-        <th class="table-nr">#</th>
-        <th class="table-description">Bezeichnung</th>
-        <th class="table-duration">Dauer (Minuten)</th>
-        <th class="table-predecessor">Vorgänger</th>
-        <th class="table-predecessor">Nachfolger</th>
-        <th class="table-buffer">freier Puffer</th>
-        <th class="table-buffer">Gesamtpuffer</th>
-        <th class="table-duration">frühester Start</th>
-        <th class="table-duration">frühestes Ende</th>
-        <th class="table-duration">spätester Start</th>
-        <th class="table-duration">spätestes Ende</th>
-    </tr>
-    </thead>
+<div id="nav">
+    <nav>
+        <ul>
+            <li><a href="http://localhost:8080/">Home</a></li>
+            <li>Netzplan
+                <ul>
+                    <li><a href="http://localhost:8080/input">Input</a></li>
+                    <li><a href="http://localhost:8080/table">Overview</a></li>
+                    <li><a href="https://de.wikipedia.org/wiki/Netzplantechnik">Netzplan-Wiki</a></li>
+                </ul>
+            </li>
+            <li>Web Design
+                <ul>
+                    <li><a href="https://codepen.io/">Codepen - Online Editor</a></li>
+                    <li>Tutorials
+                        <ul>
+                            <li>HTML
+                                <ul>
+                                    <li><a href="https://wiki.selfhtml.org/">SelfHTML</a></li>
+                                    <li><a href="#">Things</a></li>
+                                </ul>
+                            </li>
+                            <li>CSS
+                                <ul>
+                                    <li>
+                                        <a href="https://developer.mozilla.org/de/docs/Learn/Getting_started_with_the_web/CSS_basics">CSS
+                                            Wikipedia</a></li>
+                                    <li><a href="https://www.w3schools.com/css/">WC3schools</a></li>
+                                </ul>
+                            </li>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="http://localhost:8080/aboout">About</a></li>
+        </ul>
+    </nav>
+</div>
 
-    <tbody>
-    <tr th:each="knot : ${knots}">
-        <th class="table-nr" th:text="${knot.getOperationNumber}"></th>
-        <td class="table-description" th:text="${knot.getOperationDescription}"></td>
-        <td class="table-duration" th:text="${knot.getDurationInMinutes}"></td>
-        <td><span th:each="predecessor : ${knot.getPredecessor}" th:text="${knots.indexOf(predecessor) + 1} + ' '"></span></td>
-<!--        <td class="table-predecessor" th:text="${knot.getPredecessor}"> Vorgäner-->
-        <td><span th:each="successor : ${knot.getSuccessor}" th:text="${knots.indexOf(successor) + 1} + ' '"></span></td>
-<!--        <td class="table-predecessor" th:text="${knot.getSuccessor}">   Nachfolger-->
-        <td class="table-predecessor" th:text="${knot.getFreeBuffer}">   freier Puffer
-        <td class="table-predecessor" th:text="${knot.getTotalBuffer}">   Gesamtpuffer
-        <td class="table-predecessor" th:text="${knot.getEarliestStart}">   früh Start
-        <td class="table-predecessor" th:text="${knot.getEarliestEnd}">   früh Ende
-        <td class="table-predecessor" th:text="${knot.getLatestStart}">   spät Start
-        <td class="table-predecessor" th:text="${knot.getLatestEnd}">   spät Ende
-    </tr>
-    </tbody>
-</table>
+<div class="total-duration">
+    <span>Gesamtdauer: <span th:text="${knots.get(knots.size() - 1).getEarliestEnd()}">200</span></span>
+</div>
+
+<div class="output-table">
+    <table>
+        <thead>
+        <tr>
+            <th class="table-nr">#</th>
+            <th class="table-description">Bezeichnung</th>
+            <th class="table-duration">Dauer (Minuten)</th>
+            <th class="table-predecessor">Vorgänger</th>
+            <th class="table-predecessor">Nachfolger</th>
+            <th class="table-buffer">freier Puffer</th>
+            <th class="table-buffer">Gesamtpuffer</th>
+            <th class="table-duration">frühester Start</th>
+            <th class="table-duration">frühestes Ende</th>
+            <th class="table-duration">spätester Start</th>
+            <th class="table-duration">spätestes Ende</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="knot : ${knots}">
+            <th class="table-nr" th:text="${knot.getOperationNumber}"></th>
+            <td class="table-description" th:text="${knot.getOperationDescription}"></td>
+            <td class="table-duration" th:text="${knot.getDurationInMinutes}"></td>
+            <td><span th:each="predecessor : ${knot.getPredecessor}"
+                      th:text="${knots.indexOf(predecessor) + 1} + ' '"></span></td>
+            <td><span th:each="successor : ${knot.getSuccessor}" th:text="${knots.indexOf(successor) + 1} + ' '"></span>
+            </td>
+            <td class="table-predecessor" th:text="${knot.getFreeBuffer}">
+            <td class="table-predecessor" th:text="${knot.getTotalBuffer}">
+            <td class="table-predecessor" th:text="${knot.getEarliestStart}">
+            <td class="table-predecessor" th:text="${knot.getEarliestEnd}">
+            <td class="table-predecessor" th:text="${knot.getLatestStart}">
+            <td class="table-predecessor" th:text="${knot.getLatestEnd}">
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>

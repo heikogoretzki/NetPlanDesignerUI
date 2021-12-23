@@ -1,0 +1,181 @@
+* {
+    background-color: #272b30;
+    color: #717a73;
+    font-family: 'Monospaced', sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+
+button {
+    background-color: #8998ab;
+    border-radius: 1rem;
+    color: #4f5863;
+    font-size: 0.8rem;
+    font-weight: bold;
+    font-family: 'Monospaced', sans-serif;
+    padding: 5px;
+    margin-top: 1rem;
+}
+
+button:hover {
+    background-color: #4f5863;
+    color: #8998ab;
+}
+
+.titleHeader {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    float: top;
+    font-size: 1.5rem;
+}
+
+input, select {
+    width: 10rem;
+    padding: 3px;
+    color: white;
+    font-size: 0.7rem;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.output-table {
+    border: 1px solid #8998ab;
+    border-radius: 2rem;
+    box-shadow: 5px 7px;
+    width: 110rem;
+    min-width: 110rem;
+    height: 35rem;
+    min-height: 35rem;
+    margin: 0 auto;
+    overflow: auto;
+}
+
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-style: hidden;
+    margin: 0 auto;
+    width: 90%;
+    font-size: 0.9rem;
+}
+
+td, th {
+    border: 1px solid #4f5863;
+    word-wrap: break-word;
+    text-align: left;
+}
+
+.table-nr {
+    width: 2.5rem;
+}
+
+.table-description {
+    width: 15rem;
+}
+
+.table-duration {
+    width: 6rem;
+}
+
+.table-predecessor {
+    width: 6rem;
+}
+
+.table-buffer {
+    width: 6rem;
+}
+
+.total-duration {
+    margin-bottom: 2rem;
+    margin-left: 5rem;
+    padding: 1rem;
+    border: 2px solid #8998ab;
+    border-radius: 2rem;
+    box-shadow: 3px 5px;
+    width: 20rem;
+}
+
+body {
+    line-height: 2rem;
+    word-wrap:break-word !important;
+}
+
+h3 a {
+    color: #FFF;
+}
+
+a {
+    color: #FFF;
+}
+
+#nav {
+    margin: 0 auto;
+}
+
+nav {
+    margin: 2rem 0;
+    background-color: #FFF;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+}
+
+nav ul li {
+    display:inline-block;
+    background-color: #272b30;
+    padding: 0 1rem;
+}
+
+nav a {
+    display:block;
+    padding:0 10px;
+    color:#717a73;
+    line-height: 3rem;
+    text-decoration:none;
+}
+
+nav a:hover {
+    background-color: #4f5863;
+}
+
+nav ul ul {
+    display: none;
+    position: absolute;
+    top: 2.5rem;
+}
+
+nav ul li:hover > ul {
+    display: block;
+}
+
+nav ul ul li {
+    width: 12rem;
+    float:none;
+    display:list-item;
+    position: relative;
+}
+
+nav ul ul ul li {
+    width: 12rem;
+    position: relative;
+    top: -2.2rem;
+    left: 8rem;
+}
+
+li > a:after { content:  ' +'; }
+li > a:only-child:after { content: ''; }
