@@ -2,6 +2,9 @@ package de.mischokacademy.NetPlanDesignerUI.Controller;
 
 import de.mischokacademy.NetPlanDesignerUI.Domain.Knot;
 import de.mischokacademy.NetPlanDesignerUI.Domain.KnotInputForm;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,8 +20,22 @@ import java.util.Objects;
 public class NetPlanController {
     private static final List<KnotInputForm> knotInputFormList = new ArrayList<>();
 
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
     @GetMapping("/")
     public String getStartPage() {
+
+        String filterName = "Julius";
+        String queryTemplate = "SELECT * FROM test WHERE name = '%s';";
+        String query = String.format(queryTemplate, filterName);
+        System.out.println(query);
+        jdbcTemplate.execute(query);
+
+        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet("SELECT * FROM test");
+        while (sqlRowSet.next()) {
+            System.out.println(sqlRowSet.getInt("id") + " -> " + sqlRowSet.getString("name"));
+        }
 
         return "home";
     }
