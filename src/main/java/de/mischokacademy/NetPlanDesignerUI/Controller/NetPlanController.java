@@ -69,7 +69,7 @@ public class NetPlanController {
         knotInputFormList.add(knotInputForm);
 
 
-        knotInputFormRepository.save(knotInputFormList.get(knotInputFormList.size()));
+        knotInputFormRepository.save(knotInputFormList.get(knotInputFormList.size() - 1));
 
 
         model.addAttribute("knotInputForm", new KnotInputForm(knotInputFormList.size() + 1));

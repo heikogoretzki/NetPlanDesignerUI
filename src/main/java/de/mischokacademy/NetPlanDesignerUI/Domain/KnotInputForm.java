@@ -24,13 +24,8 @@ public class KnotInputForm {
     @Column(name = "durationinminutes")
     private int durationInMinutes;
 
-    @Transient
     private Integer predecessorOneListIndex;
-
-    @Transient
     private Integer predecessorTwoListIndex;
-
-    @Transient
     private Integer predecessorThreeListIndex;
 
     public KnotInputForm() {
