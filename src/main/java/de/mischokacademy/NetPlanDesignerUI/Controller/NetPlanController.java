@@ -2,13 +2,14 @@ package de.mischokacademy.NetPlanDesignerUI.Controller;
 
 import de.mischokacademy.NetPlanDesignerUI.Domain.Knot;
 import de.mischokacademy.NetPlanDesignerUI.Domain.KnotInputForm;
+import de.mischokacademy.NetPlanDesignerUI.Domain.KnotInputFormRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -23,19 +24,22 @@ public class NetPlanController {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Autowired
+    KnotInputFormRepository knotInputFormRepository;
+
     @GetMapping("/")
     public String getStartPage() {
 
-        String filterName = "Julius";
-        String queryTemplate = "SELECT * FROM test WHERE name = '%s';";
-        String query = String.format(queryTemplate, filterName);
-        System.out.println(query);
-        jdbcTemplate.execute(query);
-
-        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet("SELECT * FROM test");
-        while (sqlRowSet.next()) {
-            System.out.println(sqlRowSet.getInt("id") + " -> " + sqlRowSet.getString("name"));
-        }
+//        String filterName = "Julius";
+//        String queryTemplate = "SELECT * FROM test WHERE name = '%s';";
+//        String query = String.format(queryTemplate, filterName);
+//        System.out.println(query);
+//        jdbcTemplate.execute(query);
+//
+//        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet("SELECT * FROM test");
+//        while (sqlRowSet.next()) {
+//            System.out.println(sqlRowSet.getInt("id") + " -> " + sqlRowSet.getString("name"));
+//        }
 
         return "home";
     }
@@ -63,6 +67,10 @@ public class NetPlanController {
         Objects.requireNonNull(model);
 
         knotInputFormList.add(knotInputForm);
+
+
+        knotInputFormRepository.save(knotInputFormList.get(knotInputFormList.size()));
+
 
         model.addAttribute("knotInputForm", new KnotInputForm(knotInputFormList.size() + 1));
         model.addAttribute("knotInputFormList", knotInputFormList);

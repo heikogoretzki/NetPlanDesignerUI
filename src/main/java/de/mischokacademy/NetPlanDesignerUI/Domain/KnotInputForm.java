@@ -1,19 +1,36 @@
 package de.mischokacademy.NetPlanDesignerUI.Domain;
 
+import javax.persistence.*;
 import javax.validation.constraints.*;
 
+@Entity
+@Table(name = "knotinputform")
 public class KnotInputForm {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "operationnumber")
     private int operationNumber;
 
     @NotBlank()
     @Size(min = 1, max = 36)
+    @Column(name = "operationdescription")
     private String operationDescription;
 
     @Min(value = 1)
     @Max(value = 20160) // 2 Wochen
+    @Column(name = "durationinminutes")
     private int durationInMinutes;
+
+    @Transient
     private Integer predecessorOneListIndex;
+
+    @Transient
     private Integer predecessorTwoListIndex;
+
+    @Transient
     private Integer predecessorThreeListIndex;
 
     public KnotInputForm() {
@@ -96,5 +113,13 @@ public class KnotInputForm {
                 ", predecessorTwoListIndex=" + predecessorTwoListIndex +
                 ", predecessorThreeListIndex=" + predecessorThreeListIndex +
                 '}';
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
