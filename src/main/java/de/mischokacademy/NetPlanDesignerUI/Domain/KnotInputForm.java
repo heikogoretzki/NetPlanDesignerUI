@@ -3,29 +3,54 @@ package de.mischokacademy.NetPlanDesignerUI.Domain;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
-@Entity
+import static javax.persistence.GenerationType.SEQUENCE;
+
+@Entity(name = "KnotInputForm")
 @Table(name = "knotinputform")
 public class KnotInputForm {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(
+            name = "knotinputform_sequence",
+            sequenceName = "knotinputform_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = SEQUENCE,
+            generator = "knotinputform_sequence"
+    )
+    @Column(
+            name = "id",
+            updatable = false
+    )
     private Long id;
 
-    @Column(name = "operationnumber")
+    @Column(
+            name = "operation_number"
+    )
     private int operationNumber;
 
     @NotBlank()
     @Size(min = 1, max = 36)
-    @Column(name = "operationdescription")
+    @Column(
+            name = "operation_description",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String operationDescription;
 
     @Min(value = 1)
     @Max(value = 20160) // 2 Wochen
-    @Column(name = "durationinminutes")
+    @Column(name = "duration_in_minutes")
     private int durationInMinutes;
 
+    @Column(name = "predecessor_one_list_index")
     private Integer predecessorOneListIndex;
+
+    @Column(name = "predecessor_two_list_index")
     private Integer predecessorTwoListIndex;
+
+    @Column(name = "predecessor_three_list_index")
     private Integer predecessorThreeListIndex;
 
     public KnotInputForm() {
