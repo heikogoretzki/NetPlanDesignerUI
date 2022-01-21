@@ -1,5 +1,6 @@
-package de.mischokacademy.NetPlanDesignerUI.Domain;
+package de.mischokacademy.NetPlanDesignerUI.Database;
 
+import de.mischokacademy.NetPlanDesignerUI.Domain.KnotInputForm;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

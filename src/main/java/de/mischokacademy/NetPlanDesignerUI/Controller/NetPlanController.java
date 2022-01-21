@@ -2,14 +2,13 @@ package de.mischokacademy.NetPlanDesignerUI.Controller;
 
 import de.mischokacademy.NetPlanDesignerUI.Domain.Knot;
 import de.mischokacademy.NetPlanDesignerUI.Domain.KnotInputForm;
-import de.mischokacademy.NetPlanDesignerUI.Domain.KnotInputFormRepository;
+import de.mischokacademy.NetPlanDesignerUI.Database.KnotInputFormRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -20,9 +19,6 @@ import java.util.Objects;
 @Controller
 public class NetPlanController {
     private static final List<KnotInputForm> knotInputFormList = new ArrayList<>();
-
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
 
     @Autowired
     KnotInputFormRepository knotInputFormRepository;
@@ -55,7 +51,9 @@ public class NetPlanController {
         Objects.requireNonNull(model);
 
         model.addAttribute("knotInputForm", new KnotInputForm(knotInputFormList.size() + 1));
-        model.addAttribute("knotInputFormList", knotInputFormList);
+//        model.addAttribute("knotInputFormList", knotInputFormList);
+
+        model.addAttribute("knotInputFormList", knotInputFormRepository.findAll());
 
         return "knotInputForm";
     }
@@ -72,8 +70,12 @@ public class NetPlanController {
         knotInputFormRepository.save(knotInputFormList.get(knotInputFormList.size() - 1));
 
 
+//        model.addAttribute("knotInputForm", new KnotInputForm(knotInputFormList.size() + 1));
+//        model.addAttribute("knotInputFormList", knotInputFormList);
+
+
         model.addAttribute("knotInputForm", new KnotInputForm(knotInputFormList.size() + 1));
-        model.addAttribute("knotInputFormList", knotInputFormList);
+        model.addAttribute("knotInputFormList", knotInputFormRepository.findAll());
 
         return "knotInputForm";
     }
