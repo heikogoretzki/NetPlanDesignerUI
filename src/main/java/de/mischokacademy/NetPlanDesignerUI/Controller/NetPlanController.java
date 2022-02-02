@@ -38,8 +38,6 @@ public class NetPlanController {
         Objects.requireNonNull(model);
 
         model.addAttribute("knotInputForm", new KnotInputForm(knotInputFormList.size() + 1));
-//        model.addAttribute("knotInputFormList", knotInputFormList);
-
         model.addAttribute("knotInputFormList", knotInputFormRepository.findAll());
 
         return "knotInputForm";
@@ -53,13 +51,7 @@ public class NetPlanController {
 
         knotInputFormList.add(knotInputForm);
 
-
         knotInputFormRepository.save(knotInputFormList.get(knotInputFormList.size() - 1));
-
-
-//        model.addAttribute("knotInputForm", new KnotInputForm(knotInputFormList.size() + 1));
-//        model.addAttribute("knotInputFormList", knotInputFormList);
-
 
         model.addAttribute("knotInputForm", new KnotInputForm(knotInputFormList.size() + 1));
         model.addAttribute("knotInputFormList", knotInputFormRepository.findAll());
@@ -71,9 +63,10 @@ public class NetPlanController {
     public String getNetPlanOutputTable(Model model) {
         Objects.requireNonNull(model);
 
-        List<Knot> knots = convertKnotInputFormListToKnotList(knotInputFormList);
-        model.addAttribute("knotInputForm", new KnotInputForm());
-        model.addAttribute("knotInputFormList", knotInputFormList);
+        List<Knot> knots = convertKnotInputFormListToKnotList(knotInputFormRepository.findAll());
+
+        model.addAttribute("knotInputForm", new KnotInputForm(knotInputFormList.size() + 1));
+        model.addAttribute("knotInputFormList", knotInputFormRepository.findAll());
         model.addAttribute("knots", knots);
 
         return "outputTable";

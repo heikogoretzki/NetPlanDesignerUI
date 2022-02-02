@@ -53,7 +53,7 @@
 </div>
 
 <div class="total-duration">
-    <span>Gesamtdauer: <span th:text="${knots.get(knots.size() - 1).getEarliestEnd()} + ' Minuten'"></span></span>
+<!--    <span>Gesamtdauer: <span th:text="${knots.get(knots.size() - 1).getEarliestEnd()} + ' Minuten'"></span></span>-->
 </div>
 
 <div class="output-table">
@@ -90,6 +90,21 @@
             <td class="table-predecessor" th:text="${knot.getLatestStart}">
             <td class="table-predecessor" th:text="${knot.getLatestEnd}">
         </tr>
+<!--        <tr th:each="knot : ${knots}">-->
+<!--            <th class="table-nr" th:text="${knot.getOperationNumber}"></th>-->
+<!--            <td class="table-description" th:text="${knot.getOperationDescription}"></td>-->
+<!--            <td class="table-duration" th:text="${knot.getDurationInMinutes}"></td>-->
+<!--            <td><span th:each="predecessor : ${knot.getPredecessor}"-->
+<!--                      th:text="${knots.indexOf(predecessor) + 1} + ' '"></span></td>-->
+<!--            <td><span th:each="successor : ${knot.getSuccessor}" th:text="${knots.indexOf(successor) + 1} + ' '"></span>-->
+<!--            </td>-->
+<!--            <td class="table-predecessor" th:text="${knot.getFreeBuffer}">-->
+<!--            <td class="table-predecessor" th:text="${knot.getTotalBuffer}">-->
+<!--            <td class="table-predecessor" th:text="${knot.getEarliestStart}">-->
+<!--            <td class="table-predecessor" th:text="${knot.getEarliestEnd}">-->
+<!--            <td class="table-predecessor" th:text="${knot.getLatestStart}">-->
+<!--            <td class="table-predecessor" th:text="${knot.getLatestEnd}">-->
+<!--        </tr>-->
         </tbody>
     </table>
 </div>
